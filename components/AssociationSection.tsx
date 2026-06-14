@@ -1,10 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowCircle } from "./ArrowCircle";
 import { SectionTitle } from "./SectionTitle";
-import { ChairmanIllustration } from "./illustrations/ChairmanIllustration";
-import { FolderKunIllustration } from "./illustrations/FolderKunIllustration";
-import { ResearchIllustration } from "./illustrations/ResearchIllustration";
-import { LocationBookIllustration } from "./illustrations/LocationBookIllustration";
 
 const description =
   "説明文が入ります。説明文が入ります。説明文が入ります。説明文が入ります。";
@@ -14,25 +11,33 @@ const cards = [
     title: "理事挨拶",
     href: "/greeting",
     description,
-    Illustration: ChairmanIllustration,
+    image: "/images/illustrations/chair_man.png",
+    width: 247,
+    height: 245,
   },
   {
     title: "事業内容・取り組み",
     href: "/business",
     description,
-    Illustration: ResearchIllustration,
+    image: "/images/illustrations/Research.png",
+    width: 217,
+    height: 231,
   },
   {
     title: "組織・役員・委員会",
     href: "/organization",
     description,
-    Illustration: FolderKunIllustration,
+    image: "/images/illustrations/folder_kun.png",
+    width: 267,
+    height: 258,
   },
   {
     title: "会員名簿",
     href: "/members",
     description,
-    Illustration: LocationBookIllustration,
+    image: "/images/illustrations/Location_book.png",
+    width: 297,
+    height: 258,
   },
 ];
 
@@ -42,12 +47,18 @@ export function AssociationSection() {
       <div className="mx-auto max-w-[1280px] px-4 md:px-10">
         <SectionTitle>協会案内</SectionTitle>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 md:mt-16 md:gap-8">
+        <div className="mx-auto mt-10 grid grid-cols-2 gap-4 justify-items-center md:mt-16 md:max-w-[818px] md:gap-x-[42px] md:gap-y-8">
           {cards.map((card) => (
-            <Link key={card.href} href={card.href} className="group flex flex-col">
-              <div className="flex flex-1 flex-col items-center justify-between gap-4 rounded-[20px] bg-brand-blue px-4 pt-6 pb-4 md:rounded-[32px] md:px-8 md:pb-6 md:pt-10">
-                <card.Illustration className="h-24 w-auto sm:h-28 md:h-[200px]" />
-                <div className="flex items-center gap-2 md:gap-4">
+            <Link key={card.href} href={card.href} className="group flex max-w-[388px] flex-col">
+              <div className="flex h-[423px] flex-col items-center justify-between gap-4 rounded-[20px] bg-brand-blue px-4 pt-6 pb-4 md:rounded-[32px] md:px-8 md:pb-6 md:pt-15">
+                <Image
+                  src={card.image}
+                  alt=""
+                  width={card.width}
+                  height={card.height}
+                  className="h-24 w-auto sm:h-28 md:h-[200px]"
+                />
+                <div className="flex flex-col items-center gap-1 pb-1 md:gap-2 md:pb-2">
                   <span className="text-sm font-medium sm:text-base md:text-xl">{card.title}</span>
                   <ArrowCircle className="size-6 text-base md:size-[33px] md:text-2xl" />
                 </div>
