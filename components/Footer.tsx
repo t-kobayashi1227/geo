@@ -18,7 +18,7 @@ export function Footer() {
             <span className="mr-2 text-xs md:text-base">一般社団法人</span>
             新潟県地質調査業協会
           </p>
-          <p className="font-light">〒951-8051　新潟市中央区新島町通1ノ町1977番地2 ロイヤル礎406</p>
+          <p className="font-light md:text-xl">〒951-8051　新潟市中央区新島町通1ノ町1977番地2 ロイヤル礎406</p>
           <p className="font-light">TEL（025）225-8360　FAX（025）225-8361</p>
         </div>
 

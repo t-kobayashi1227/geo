@@ -47,7 +47,7 @@ export function AssociationSection() {
       <div className="mx-auto max-w-[1280px] px-4 md:px-10">
         <SectionTitle>協会案内</SectionTitle>
 
-        <div className="mx-auto mt-10 grid grid-cols-2 gap-4 justify-items-center md:mt-16 md:max-w-[818px] md:gap-x-[42px] md:gap-y-8">
+        <div className="mx-auto mt-10 grid grid-cols-2 gap-4 justify-items-center md:mt-16 md:max-w-[818px] md:gap-x-[42px] md:gap-y-12">
           {cards.map((card) => (
             <Link key={card.href} href={card.href} className="group flex max-w-[388px] flex-col">
               <div className="flex h-[423px] flex-col items-center justify-between gap-4 rounded-[20px] bg-brand-blue px-4 pt-6 pb-4 md:rounded-[32px] md:px-8 md:pb-6 md:pt-15">
@@ -63,7 +63,7 @@ export function AssociationSection() {
                   <ArrowCircle className="size-6 text-base md:size-[33px] md:text-2xl" />
                 </div>
               </div>
-              <p className="mt-3 text-xs leading-relaxed sm:text-sm md:text-base">{card.description}</p>
+              <p className="mt-4 text-xs leading-relaxed sm:text-sm md:text-base">{card.description}</p>
             </Link>
           ))}
         </div>
@@ -71,10 +71,10 @@ export function AssociationSection() {
         <div className="mt-10 flex justify-center md:mt-16">
           <Link
             href="/about"
-            className="flex items-center gap-3 rounded-full bg-brand-blue px-8 py-3 text-base font-medium md:gap-4 md:px-12 md:py-4 md:text-xl"
+            className="relative flex w-[390px] items-center justify-center rounded-full bg-brand-blue py-3 text-base font-medium md:py-4 md:text-xl"
           >
             詳しく見る
-            <ArrowCircle className="size-6 text-base md:size-[33px] md:text-2xl" />
+            <ArrowCircle className="absolute right-4 size-6 text-base md:right-6 md:size-[33px] md:text-2xl" />
           </Link>
         </div>
       </div>

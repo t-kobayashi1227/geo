@@ -25,7 +25,7 @@ export function AboutSection() {
 
         <h2 className="text-center text-3xl font-bold md:mt-[145px] md:text-5xl">地質調査って何？</h2>
 
-        <div className="mx-auto mt-6 max-w-3xl space-y-6 text-center text-base leading-loose md:mt-10 md:text-2xl">
+        <div className="mx-auto mt-6 max-w-3xl space-y-6 text-center text-base leading-loose md:mt-10 md:text-3xl font-bold">
           <p>
             地質調査は住宅やビルなどの建築構造物、
             <br />
