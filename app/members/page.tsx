@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { RecruitSection } from "@/components/RecruitSection";
 import { SectionTitle } from "@/components/SectionTitle";
+import { MdArrowOutward } from "react-icons/md";
 
 const members = [
   { name: "旭調査設計(株)", address: "新潟市中央区幸西1-1-11", tel: "025-245-8345" },
@@ -62,16 +63,19 @@ export default function MembersPage() {
               {members.map((member) => (
                 <div
                   key={member.name}
-                  className="flex items-start gap-3 bg-bottom bg-repeat-x bg-[length:15px_3px] bg-[image:repeating-linear-gradient(to_right,var(--color-foreground)_0_3px,transparent_3px_15px)] py-4 last:bg-none md:gap-4 md:py-6"
+                  className="flex items-start gap-3 bg-bottom bg-repeat-x bg-[length:15px_3px] bg-[image:repeating-linear-gradient(to_right,var(--color-foreground)_0_3px,transparent_3px_15px)] py-4 md:gap-4 md:py-6"
                 >
                   <MemberBullet />
                   <div className="space-y-1.5 text-sm md:space-y-2 md:text-lg">
                     <p className="font-bold">{member.name}</p>
                     <p>
-                      {member.address}／TEL：{member.tel}
+                      {member.address}
+                      <br className="md:hidden" />
+                      <span className="hidden md:inline">／</span>
+                      TEL：{member.tel}
                     </p>
-                    <Link href="#" className="inline-block underline">
-                      Website ›
+                    <Link href="#" className="inline-flex items-center gap-1 whitespace-nowrap underline">
+                      Website <MdArrowOutward className="size-5 md:size-7" />
                     </Link>
                   </div>
                 </div>

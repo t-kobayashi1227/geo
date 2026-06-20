@@ -10,16 +10,30 @@ export function AboutSection() {
           src="/images/decorative/Polygon1.png"
           width={832}
           height={75}
+          priority
         />
       </div>
 
       <div className="relative mx-auto flex max-w-[1280px] flex-col px-4 md:px-10 mt-10">
-        <div className="pointer-events-none absolute right-2 top-2 z-10 w-20 md:hidden">
-          <Image alt="" className="w-full" src="/images/illustrations/insect.png" width={91} height={53} />
+        <div className="pointer-events-none absolute right-10 top-10 z-10 w-20 md:hidden">
+          <Image
+            alt=""
+            className="w-full"
+            src="/images/illustrations/insect.png"
+            width={91}
+            height={53}
+          />
         </div>
 
         <div className="absolute z-10 mx-auto mb-8 w-[160px] sm:w-[200px] md:w-[220px] lg:left-[calc(50%-380px)] lg:top-[-28px] lg:mx-0 lg:mb-0 lg:w-[250px]">
-          <Image alt="" className="w-full" src="/images/decorative/Vector1.png" width={251} height={224} />
+          <Image
+            alt=""
+            className="w-full"
+            src="/images/decorative/Vector1.png"
+            width={251}
+            height={224}
+            priority
+          />
           <div className="absolute inset-0 flex flex-col items-center justify-center pb-8 text-center font-bold leading-snug">
             <p className="text-lg sm:text-2xl md:text-3xl">実は</p>
             <p className="text-lg sm:text-2xl md:text-3xl">とっても</p>

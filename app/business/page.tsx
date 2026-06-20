@@ -104,7 +104,7 @@ export default function BusinessPage() {
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <SectionTitle>事業内容・取り組み</SectionTitle>
 
-            <p className="mx-auto mt-10 text-center text-sm leading-relaxed md:mt-16 md:text-3xl">
+            <p className="mx-auto mt-10 text-sm leading-relaxed md:mt-16 md:text-3xl">
               協会は、県民の安全、安心の向上と県土の保全のため、地質調査の技術の向上及び普及・啓発とともに地質調査業経営の総合的な改善発達を図り、その経済的、社会的地位を向上させ、もって公共の福祉に寄与することを目的としております。
               <br />
               その目的を達成するため、次の事業活動を行っております。

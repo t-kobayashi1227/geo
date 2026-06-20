@@ -84,7 +84,7 @@ export default function OrganizationPage() {
                   <GroupMarker />
                   <h3 className="text-lg font-bold md:text-2xl">役員</h3>
                 </div>
-                <div className="pl-9 md:pl-12">
+                <div className="px-9 md:pl-12">
                   {officers.map((officer) => (
                     <div
                       key={officer.name}

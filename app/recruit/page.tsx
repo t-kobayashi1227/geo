@@ -49,7 +49,7 @@ const categories = [
 const fieldWorkTypes = [
   {
     no: "01",
-    title: "地質踏査・\n電気探査機器分析",
+    title: "地質踏査・\n調査計画立案",
     description:
       "既存資料の確認や現地調査を行い、地形・地質の問題点を把握したうえで、必要な調査計画を立案。",
   },
@@ -186,27 +186,27 @@ function TypeCard({
   const pill = theme === "green" ? "/images/decorative/Union.png" : "/images/decorative/Union_blue.png";
 
   return (
-    <div className="h-[620px] border-2 relative flex flex-col rounded-[20px] bg-[#FFF2B1] pb-3 pt-6 md:rounded-[24px] md:pb-4 md:pt-8">
-      <div className="mx-auto size-5 rounded-full border border-foreground bg-background md:size-10" />
-      <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 md:mx-6 md:mt-10 md:rounded-[16px] md:px-4 md:pb-4 md:pt-8">
-        <div className="absolute -top-5 left-0 right-0 flex justify-center md:-top-[26px]">
-          <div className="relative w-[180px] md:w-[240px]">
+    <div className="h-[335px] border-2 relative flex flex-col rounded-[20px] bg-[#FFF2B1] pb-3 pt-6 md:h-[620px] lg:rounded-[24px] lg:pb-4 lg:pt-8">
+      <div className="mx-auto size-6 shrink-0 rounded-full border border-foreground bg-background lg:size-10" />
+      <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 mt-8 lg:mx-6 lg:mt-10 lg:rounded-[16px] lg:px-4 lg:pb-4 lg:pt-8">
+        <div className="absolute -top-5 left-0 right-0 flex justify-center lg:-top-[26px]">
+          <div className="relative w-[200px] lg:w-[240px]">
             <Image src={pill} alt="" width={317} height={79} className="h-auto w-full" />
-            <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white md:text-2xl">
+            <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white lg:text-2xl">
               TYPE.{no}
             </span>
           </div>
         </div>
-        <p className="whitespace-pre-line text-center text-xs font-black leading-snug text-[#FFFA94] [-webkit-text-stroke:2px_black] [paint-order:stroke_fill] md:text-3xl md:[-webkit-text-stroke:2px_black]">
+        <p className="whitespace-pre-line text-center text-lg font-black leading-snug text-[#FFFA94] [-webkit-text-stroke:2px_black] [paint-order:stroke_fill] lg:text-3xl">
           {title}
         </p>
       </div>
       {description && (
         <>
-          <div className="mx-4 mt-4 md:mt-10">
+          <div className="mx-4 mt-4 lg:mt-10">
             <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
           </div>
-          <p className="h-[135px] flex flex-col justify-center mt-2 text-center text-xs leading-relaxed md:my-6 md:mx-7 md:text-2xl">
+          <p className="h-[135px] mx-3 flex flex-col justify-center text-center text-sm leading-relaxed lg:my-6 lg:mx-7 lg:text-2xl">
             {description}
           </p>
           <div className="mx-4">
@@ -232,27 +232,27 @@ function TypeCardOfficeWork({
   const pill = theme === "green" ? "/images/decorative/Union.png" : "/images/decorative/Union_blue.png";
 
   return (
-    <div className="h-[420px] border-2 relative flex flex-col rounded-[20px] bg-[#E2DEDC] pb-3 pt-6 md:rounded-[24px] md:pb-4 md:pt-8">
-      <div className="mx-auto size-5 rounded-full border border-foreground bg-background md:size-10" />
-      <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 md:mx-6 md:mt-10 md:rounded-[16px] md:px-4 md:pb-4 md:pt-8">
-        <div className="absolute -top-5 left-0 right-0 flex justify-center md:-top-[26px]">
-          <div className="relative w-[180px] md:w-[240px]">
+    <div className="h-[235px] border-2 relative flex flex-col rounded-[20px] bg-[#E2DEDC] pb-3 pt-6 md:h-[420px] md:rounded-[24px] md:pb-4 md:pt-8">
+      <div className="mx-auto size-6 shrink-0 rounded-full border border-foreground bg-background lg:size-10" />
+      <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 mt-8 lg:mx-6 lg:mt-10 lg:rounded-[16px] lg:px-4 lg:pb-4 lg:pt-8">
+        <div className="absolute -top-5 left-0 right-0 flex justify-center lg:-top-[26px]">
+          <div className="relative w-[200px] lg:w-[240px]">
             <Image src={pill} alt="" width={317} height={79} className="h-auto w-full" />
-            <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white md:text-2xl">
+            <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white lg:text-2xl">
               TYPE.{no}
             </span>
           </div>
         </div>
-        <p className="whitespace-pre-line text-center text-xs font-black leading-snug text-[#FFFA94] [-webkit-text-stroke:2px_black] [paint-order:stroke_fill] md:text-3xl md:[-webkit-text-stroke:2px_black]">
+        <p className="whitespace-pre-line text-center text-lg font-black leading-snug text-[#FFFA94] [-webkit-text-stroke:2px_black] [paint-order:stroke_fill] lg:text-3xl">
           {title}
         </p>
       </div>
       {description && (
         <>
-          <div className="mx-4 mt-4 md:mt-10">
+          <div className="mx-4 mt-4 lg:mt-10">
             <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
           </div>
-          <p className="h-[135px] flex flex-col justify-center mt-2 text-center text-xs leading-relaxed md:my-6 md:mx-7 md:text-2xl">
+          <p className="h-[135px] mx-3 flex flex-col justify-center text-center text-sm leading-relaxed lg:my-6 lg:mx-7 lg:text-2xl">
             {description}
           </p>
           <div className="mx-4">
@@ -274,7 +274,7 @@ export default function RecruitPage() {
 
         <section className="bg-background pt-16 pb-16 md:pt-24 md:pb-24">
           <div className="flex flex-col md:flex-row mx-auto max-w-[1280px] px-4 md:px-10">
-            <div className="flex flex-col items-center justify-center gap-4 md:basis-2/5 md:gap-6">
+            <div className="flex  items-center justify-center gap-4 md:basis-2/5 md:gap-6 md:flex-col">
               <div className="flex items-end justify-center">
                 <Image
                   src="/images/illustrations/human_woods.png"
@@ -360,13 +360,13 @@ export default function RecruitPage() {
             </p>
 
             <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
-              <div className="grid grid-cols-2 gap-4 md:gap-6">
+              <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-6">
                 {fieldWorkTypes.slice(0, 4).map((type) => (
                   <TypeCard key={type.no} theme="green" {...type} />
                 ))}
               </div>
-              <div className="mt-4 flex justify-center md:mt-6">
-                <div className="w-[calc(50%-0.5rem)] md:w-[calc(50%-0.75rem)]">
+              <div className="mt-4 flex justify-center lg:mt-6">
+                <div className="w-[290px] lg:w-[calc(50%-0.75rem)]">
                   <TypeCard theme="green" {...fieldWorkTypes[4]} />
                 </div>
               </div>
@@ -393,13 +393,13 @@ export default function RecruitPage() {
             </p>
 
             <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
-              <div className="grid grid-cols-2 gap-4 md:gap-6">
+              <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-6">
                 {officeWorkTypes.slice(0, 2).map((type) => (
                   <TypeCardOfficeWork key={type.no} theme="blue" {...type} />
                 ))}
               </div>
-              <div className="mt-4 flex justify-center md:mt-6">
-                <div className="w-[calc(50%-0.5rem)] md:w-[calc(50%-0.75rem)]">
+              <div className="mt-4 flex justify-center lg:mt-6">
+                <div className="w-[290px] lg:w-[calc(50%-0.75rem)]">
                   <TypeCardOfficeWork theme="blue" {...officeWorkTypes[2]} />
                 </div>
               </div>

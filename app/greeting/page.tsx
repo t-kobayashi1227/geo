@@ -22,7 +22,7 @@ export default function GreetingPage() {
         </section>
 
         <section className="bg-background pb-16 md:pb-24">
-          <div className="mx-auto max-w-[1280px] px-4 md:px-10">
+          <div className="mx-auto max-w-[1280px] px-5 md:px-10">
             <SectionTitle>理事挨拶</SectionTitle>
 
             <p className="mx-auto mt-10 text-center text-lg font-medium leading-relaxed md:mt-16 md:text-3xl">
