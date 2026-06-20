@@ -1,45 +1,47 @@
 import Image from "next/image";
-import { ArrowCircle } from "@/components/ArrowCircle";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
-import { RecruitSection } from "@/components/RecruitSection";
+import { RecruitDownload } from "@/components/RecruitDownload";
+import { SectionTitle } from "@/components/SectionTitle";
+import { ArrowBigDown } from 'lucide-react';
+import { ImArrowDown } from "react-icons/im";
 
 const categories = [
   {
     title: "社会資本整備",
-    description: "道路・橋・ダム・河川・トンネル　鉄道・空港",
-    color: "bg-brand-peach",
+    description: "道路・橋・ダム・河川・\nトンネル　鉄道・空港",
+    color: "bg-[#FFC8C9]",
   },
   {
     title: "住環境整備・都市開発",
-    description: "住宅・高層建築物・大規模建築物・鉄塔",
-    color: "bg-brand-blue",
+    description: "住宅・高層建築物・\n大規模建築物・鉄塔",
+    color: "bg-[#FFD68A]",
   },
   {
     title: "地盤・斜面防災",
     description: "土砂災害・液状化",
-    color: "bg-brand-orange",
+    color: "bg-[#D3E2FF]",
   },
   {
     title: "環境保全",
     description: "地下水汚染・土壌汚染等",
-    color: "bg-brand-green",
+    color: "bg-[#CAFF8A]",
   },
   {
-    title: "社会資本の維持管理\n点検・長寿命化",
+    title: "社会資本の維持管理点検\n・長寿命化",
     description: "各種施設点検及び長寿命化検討",
-    color: "bg-brand-peach",
+    color: "bg-[#92D1F7]",
   },
   {
-    title: "地盤図・ハザードマップの作成",
+    title: "地盤図・\nハザードマップの作成",
     description: "土砂災害危険区域マップ\n液状化しやすさマップなど",
-    color: "bg-brand-green",
+    color: "bg-[#E5BAFD]",
   },
   {
     title: "地下資源開発・学術調査等\n（活断層・学術調査等）",
-    description: "石油・石炭・鉱物資源・地熱地中熱などの地下資源開発、地震における活断層調査など",
-    color: "bg-brand-orange",
+    description: "石炭・石油・鉱物資源・\n地熱地中熱・地下空間を利用した\n資源開発 地震における活断層分野",
+    color: "bg-[#FFA5BE]",
     full: true,
   },
 ];
@@ -47,48 +49,126 @@ const categories = [
 const fieldWorkTypes = [
   {
     no: "01",
-    title: "地質踏査・電気探査機器分析",
+    title: "地質踏査・\n電気探査機器分析",
     description:
       "既存資料の確認や現地調査を行い、地形・地質の問題点を把握したうえで、必要な調査計画を立案。",
   },
   {
     no: "02",
     title: "ボーリング調査",
-    description: "地中に孔を掘って土や岩を採取し、地層や地質の状態を確認する。",
+    description: "地中に孔を掘って土や岩を採取し、地盤の状態や硬さを調べる調査。",
   },
   {
     no: "03",
     title: "サウンディング調査",
-    description: "地面に棒を貫入させたり、その抵抗から軟らかい地盤の硬さ等を調べる簡易調査。",
+    description: "地面に棒を回しながら押し込み、その抵抗から軟らかい地盤の硬さを調べる簡易調査。",
   },
   {
     no: "04",
     title: "物理探査",
-    description: "地震波や電気などを利用して、地中の構造や形状、性状の有無を調べる方法。",
+    description: "地震波や電気などを利用して、地中の構造や断層・空洞の有無を調べる調査。",
   },
   {
     no: "05",
     title: "土質試験",
-    description: "採取した土や岩を詳しく調べ、強度や性状などを確認する試験。",
+    description: "採取した土や岩を詳しく調べ、強度や性質などを確認する試験。",
   },
 ];
 
 const officeWorkTypes = [
-  { no: "01", title: "地盤図（土質・ハザード）マップの作成" },
-  { no: "02", title: "地盤の状態（評価）とリスク" },
-  { no: "03", title: "各種構造物の設計の対応" },
+  { no: "01", title: "地盤図（災害ハザード）マップの作成" },
+  { no: "02", title: "地盤の評価とリスク" },
+  { no: "03", title: "3D地質モデルの作成" },
 ];
 
-const fields = ["学校・公共施設", "道路・トンネル", "河川・ダム", "住宅・建築物", "上水道・下水道"];
+const fields = [
+  "学術調査・\n研究",
+  "地下水・\n土壌保全",
+  "安心・安全な\n住宅や\n街づくり",
+  "インフラ整備\n管理",
+  "災害復旧",
+];
 
-function CategoryDot({ className = "" }: { className?: string }) {
+function DashedBorder({
+  rx = 40,
+  dashLength = 8,
+  gapLength = 6,
+  strokeWidth = 2,
+}: {
+  rx?: number;
+  dashLength?: number;
+  gapLength?: number;
+  strokeWidth?: number;
+}) {
+  const sw = strokeWidth;
+  return (
+    <svg
+      className="pointer-events-none absolute inset-0 h-full w-full"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x={sw / 2}
+        y={sw / 2}
+        width={`calc(100% - ${sw}px)`}
+        height={`calc(100% - ${sw}px)`}
+        rx={rx}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={sw}
+        strokeDasharray={`${dashLength} ${gapLength}`}
+      />
+    </svg>
+  );
+}
+
+function DashedLine({
+  dashLength = 6,
+  gapLength = 4,
+  strokeWidth = 2,
+}: {
+  dashLength?: number;
+  gapLength?: number;
+  strokeWidth?: number;
+}) {
+  return (
+    <svg className="block w-full" height={strokeWidth} xmlns="http://www.w3.org/2000/svg">
+      <line
+        x1="0"
+        y1={strokeWidth / 2}
+        x2="100%"
+        y2={strokeWidth / 2}
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeDasharray={`${dashLength} ${gapLength}`}
+      />
+    </svg>
+  );
+}
+
+function DownArrow({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      className={`h-16 w-16 md:h-24 md:w-24 ${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="30,0 70,0 70,45 100,45 50,100 0,45 30,45"
+        fill="#FDF9E4"
+        stroke="black"
+        strokeWidth="4"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function CategoryDot() {
   return (
     <span
       aria-hidden="true"
-      className={`inline-flex size-5 shrink-0 items-center justify-center rounded-full border border-foreground md:size-6 ${className}`}
-    >
-      <span className="size-2 rounded-full border border-foreground bg-white md:size-2.5" />
-    </span>
+      className="inline-block size-5 shrink-0 rounded-full border border-foreground bg-white md:size-6"
+    />
   );
 }
 
@@ -104,31 +184,86 @@ function TypeCard({
   theme: "green" | "blue";
 }) {
   const pill = theme === "green" ? "/images/decorative/Union.png" : "/images/decorative/Union_blue.png";
-  const pillTextColor = theme === "green" ? "text-[#00A32B]" : "text-[#005AA3]";
 
   return (
-    <div className="flex flex-col">
-      <div
-        className="relative z-10 mx-2 flex min-h-[40px] items-center justify-center gap-1.5 rounded-full px-3 py-1.5 text-center sm:mx-3 md:min-h-[52px] md:gap-2 md:px-4"
-        style={{ backgroundImage: `url('${pill}')`, backgroundSize: "100% 100%", backgroundRepeat: "no-repeat" }}
-      >
-        <span
-          className={`shrink-0 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold sm:text-xs md:text-sm ${pillTextColor}`}
-        >
-          TYPE.{no}
-        </span>
-        {description && (
-          <span className="text-[10px] leading-tight font-bold text-white sm:text-xs md:text-sm">{title}</span>
-        )}
+    <div className="h-[620px] border-2 relative flex flex-col rounded-[20px] bg-[#FFF2B1] pb-3 pt-6 md:rounded-[24px] md:pb-4 md:pt-8">
+      <div className="mx-auto size-5 rounded-full border border-foreground bg-background md:size-10" />
+      <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 md:mx-6 md:mt-10 md:rounded-[16px] md:px-4 md:pb-4 md:pt-8">
+        <div className="absolute -top-5 left-0 right-0 flex justify-center md:-top-[26px]">
+          <div className="relative w-[180px] md:w-[240px]">
+            <Image src={pill} alt="" width={317} height={79} className="h-auto w-full" />
+            <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white md:text-2xl">
+              TYPE.{no}
+            </span>
+          </div>
+        </div>
+        <p className="whitespace-pre-line text-center text-xs font-black leading-snug text-[#FFFA94] [-webkit-text-stroke:2px_black] [paint-order:stroke_fill] md:text-3xl md:[-webkit-text-stroke:2px_black]">
+          {title}
+        </p>
       </div>
-      <div className="-mt-4 flex min-h-[110px] flex-1 items-center rounded-[18px] bg-brand-cream px-3 pt-7 pb-4 text-xs leading-relaxed sm:rounded-[24px] md:min-h-[140px] md:px-5 md:pt-9 md:pb-6 md:text-sm">
-        {description ?? (
-          <span className="block w-full text-center text-sm font-bold md:text-lg">{title}</span>
-        )}
-      </div>
+      {description && (
+        <>
+          <div className="mx-4 mt-4 md:mt-10">
+            <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
+          </div>
+          <p className="h-[135px] flex flex-col justify-center mt-2 text-center text-xs leading-relaxed md:my-6 md:mx-7 md:text-2xl">
+            {description}
+          </p>
+          <div className="mx-4">
+            <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
+          </div>
+        </>
+      )}
     </div>
   );
 }
+
+function TypeCardOfficeWork({
+  no,
+  title,
+  description,
+  theme,
+}: {
+  no: string;
+  title: string;
+  description?: string;
+  theme: "green" | "blue";
+}) {
+  const pill = theme === "green" ? "/images/decorative/Union.png" : "/images/decorative/Union_blue.png";
+
+  return (
+    <div className="h-[420px] border-2 relative flex flex-col rounded-[20px] bg-[#E2DEDC] pb-3 pt-6 md:rounded-[24px] md:pb-4 md:pt-8">
+      <div className="mx-auto size-5 rounded-full border border-foreground bg-background md:size-10" />
+      <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 md:mx-6 md:mt-10 md:rounded-[16px] md:px-4 md:pb-4 md:pt-8">
+        <div className="absolute -top-5 left-0 right-0 flex justify-center md:-top-[26px]">
+          <div className="relative w-[180px] md:w-[240px]">
+            <Image src={pill} alt="" width={317} height={79} className="h-auto w-full" />
+            <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white md:text-2xl">
+              TYPE.{no}
+            </span>
+          </div>
+        </div>
+        <p className="whitespace-pre-line text-center text-xs font-black leading-snug text-[#FFFA94] [-webkit-text-stroke:2px_black] [paint-order:stroke_fill] md:text-3xl md:[-webkit-text-stroke:2px_black]">
+          {title}
+        </p>
+      </div>
+      {description && (
+        <>
+          <div className="mx-4 mt-4 md:mt-10">
+            <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
+          </div>
+          <p className="h-[135px] flex flex-col justify-center mt-2 text-center text-xs leading-relaxed md:my-6 md:mx-7 md:text-2xl">
+            {description}
+          </p>
+          <div className="mx-4">
+            <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 
 export default function RecruitPage() {
   return (
@@ -138,74 +273,66 @@ export default function RecruitPage() {
         <PageHero illustration="イラストor写真" />
 
         <section className="bg-background pt-16 pb-16 md:pt-24 md:pb-24">
-          <div className="mx-auto max-w-[1280px] px-4 md:px-10">
-            <h2 className="text-center text-xl font-bold leading-snug md:text-3xl">
-              さまざまな分野で活躍する
-              <br />
-              「地質エンジニア」
-            </h2>
-
-            <div className="mx-auto mt-8 max-w-2xl space-y-6 text-center text-sm leading-loose md:mt-12 md:text-lg">
-              <p>
-                例えば田んぼのような軟らかい土地の上に家を建てた場合、家が傾いたり沈んだりすることがあります。
-              </p>
-              <p>
-                これは田んぼのような土の重さに負けて、土が破壊されたり、または圧縮されたりすることが原因です。
-              </p>
-              <p>
-                このように構造物を「安全に保つためには何をしなければならないか」を考えるために地質調査をおこない、地中の状態を「分析・診断」します。
-              </p>
-              <p>
-                また、地すべりや崖崩れなどの自然災害対策、地下水・鉱泉・温泉などの地下資源開発、土壌汚染調査、近年では多くの地域のハザードマップ作成などにもその技術力を発揮しています。
-              </p>
-              <p>
-                「地質エンジニア」はみなさんが安全・安心に生活するための地質・地盤調査のスペシャリストです。
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-background pb-16 md:pb-24">
-          <div className="mx-auto max-w-[1280px] px-4 md:px-10">
-            <div className="flex flex-col items-center gap-4 md:gap-6">
+          <div className="flex flex-col md:flex-row mx-auto max-w-[1280px] px-4 md:px-10">
+            <div className="flex flex-col items-center justify-center gap-4 md:basis-2/5 md:gap-6">
               <div className="flex items-end justify-center">
                 <Image
-                  src="/images/illustrations/ChatGPT Image 2026年5月19日 13_49_05 2.png"
+                  src="/images/illustrations/human_woods.png"
                   alt=""
-                  width={296}
-                  height={249}
-                  className="h-24 w-auto md:h-36"
-                />
-                <Image
-                  src="/images/illustrations/ChatGPT Image 2026年5月19日 13_41_13 1.png"
-                  alt=""
-                  width={279}
+                  width={416}
                   height={279}
-                  className="-ml-6 h-28 w-auto md:-ml-10 md:h-44"
+                  className="h-28 w-auto md:h-40"
                 />
               </div>
-              <h2 className="text-center text-2xl font-bold leading-snug md:text-4xl">
+              <h2 className="text-left tracking-[0.5em] text-2xl font-bold leading-snug [writing-mode:vertical-rl] md:text-4xl">
                 地質エンジニアって
                 <br />
                 どんな仕事？
               </h2>
             </div>
 
-            <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:gap-6">
+            <div>
+              <div className="mx-auto mt-8 max-w-2xl space-y-6 text-left font-medium text-sm leading-loose md:mt-12 md:text-2xl">
+                <p>
+                  さまざまな分野で活躍する<br />「地質エンジニア」
+                </p>
+                <p>
+                  例えば田んぼのような軟らかい土地の上に家を建てた場合、家が傾いたり沈んだりすることがあります。
+                </p>
+                <p>
+                  これは田んぼのような土の重さに負けて、土が破壊されたり、または圧縮されたりすることが原因です。
+                </p>
+                <p>
+                  このように構造物を「安全に保つためには何をしなければならないか」を考えるために地質調査をおこない、地中の状態を「分析・診断」します。
+                </p>
+                <p>
+                  また、地すべりや崖崩れなどの自然災害対策、地下水・鉱泉・温泉などの地下資源開発、土壌汚染調査、近年では多くの地域のハザードマップ作成などにもその技術力を発揮しています。
+                </p>
+                <p>
+                  「地質エンジニア」はみなさんが安全・安心に生活するための地質・地盤調査のスペシャリストです。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-background pb-16 md:pb-24">
+          <div className="mx-auto max-w-[1280px] px-4 md:px-10">
+            <div className="mx-auto mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:gap-6">
               {categories.map((category) => (
                 <div
                   key={category.title}
-                  className={`rounded-[16px] bg-white px-4 py-4 md:rounded-[20px] md:px-6 md:py-5 ${
-                    category.full ? "sm:col-span-2" : ""
-                  }`}
+                  className={`relative flex flex-col justify-center mx-auto max-w-[535px] h-[286px] w-full rounded-[16px] px-4 py-4 md:rounded-[45px] md:px-6 md:py-5 ${category.color} ${category.full ? "sm:col-span-2" : "max-w-[535px]"
+                    }`}
                 >
-                  <div className="flex items-center gap-2 md:gap-3">
-                    <CategoryDot className={category.color} />
-                    <h3 className="whitespace-pre-line text-sm font-bold leading-snug md:text-lg">
+                  <DashedBorder dashLength={8} gapLength={12} strokeWidth={3} />
+                  <div className="flex items-center justify-center gap-2 md:gap-3">
+                    <CategoryDot />
+                    <h3 className="whitespace-pre-line text-sm font-bold leading-snug md:text-3xl">
                       {category.title}
                     </h3>
                   </div>
-                  <p className="mt-2 whitespace-pre-line text-xs leading-relaxed md:mt-3 md:text-sm">
+                  <p className="mt-2 whitespace-pre-line text-center text-xs leading-relaxed md:mt-3 md:text-3xl">
                     {category.description}
                   </p>
                 </div>
@@ -218,26 +345,21 @@ export default function RecruitPage() {
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <div className="flex justify-center">
               <Image
-                src="/images/illustrations/ChatGPT Image 2026年5月19日 13_45_37 1.png"
+                src="/images/illustrations/human_houses.png"
                 alt=""
-                width={327}
+                width={550}
                 height={327}
                 className="h-28 w-auto md:h-40"
               />
-              <Image
-                src="/images/illustrations/house.png"
-                alt=""
-                width={402}
-                height={309}
-                className="-ml-4 h-24 w-auto self-end md:-ml-6 md:h-32"
-              />
             </div>
-            <h2 className="mt-4 text-center text-2xl font-bold md:mt-6 md:text-4xl">フィールドワーク</h2>
-            <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-lg">
+            <div className="mt-4 md:mt-6">
+              <SectionTitle>フィールドワーク</SectionTitle>
+            </div>
+            <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-2xl">
               (地質・地盤の診断を行うための地中情報を取得します)
             </p>
 
-            <div className="mx-auto mt-10 max-w-3xl md:mt-16">
+            <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
               <div className="grid grid-cols-2 gap-4 md:gap-6">
                 {fieldWorkTypes.slice(0, 4).map((type) => (
                   <TypeCard key={type.no} theme="green" {...type} />
@@ -263,50 +385,69 @@ export default function RecruitPage() {
                 className="h-28 w-auto md:h-40"
               />
             </div>
-            <h2 className="mt-4 text-center text-2xl font-bold md:mt-6 md:text-4xl">オフィスワーク</h2>
-            <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-lg">
+            <div className="mt-4 md:mt-6">
+              <SectionTitle>オフィスワーク</SectionTitle>
+            </div>
+            <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-2xl">
               (得られた地中情報を分析・診断して工事などに役立てる地質エンジニア！)
             </p>
 
-            <div className="mx-auto mt-10 max-w-3xl md:mt-16">
+            <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
               <div className="grid grid-cols-2 gap-4 md:gap-6">
                 {officeWorkTypes.slice(0, 2).map((type) => (
-                  <TypeCard key={type.no} theme="blue" {...type} />
+                  <TypeCardOfficeWork key={type.no} theme="blue" {...type} />
                 ))}
               </div>
               <div className="mt-4 flex justify-center md:mt-6">
                 <div className="w-[calc(50%-0.5rem)] md:w-[calc(50%-0.75rem)]">
-                  <TypeCard theme="blue" {...officeWorkTypes[2]} />
+                  <TypeCardOfficeWork theme="blue" {...officeWorkTypes[2]} />
                 </div>
               </div>
             </div>
 
-            <div className="mt-10 flex justify-center gap-3 md:mt-16">
-              <ArrowCircle className="rotate-90" />
-              <ArrowCircle className="rotate-90" />
+            <div className="mt-10 flex justify-center gap-6 md:mt-16 md:gap-10">
+              <ArrowBigDown
+                size={150}
+                strokeWidth={0.3}
+                fill="#FFE69B"
+                className="text-neutral-900"
+              />
+              <ArrowBigDown
+                size={150}
+                strokeWidth={0.3}
+                fill="#FFE69B"
+                className="text-neutral-900"
+              />
+              <ArrowBigDown
+                size={150}
+                strokeWidth={0.3}
+                fill="#FFE69B"
+                className="text-neutral-900"
+              />
             </div>
 
-            <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-3 md:mt-10 md:gap-6">
-              {fields.map((field) => (
+            <div className="mx-auto mt-6 flex max-w-[1280px] items-center justify-center sm:mt-8 md:mt-10 md:mb-10 lg:mb-16 xl:mb-30">
+              {fields.map((field, index) => (
                 <div
                   key={field}
-                  className="relative flex size-24 shrink-0 items-center justify-center text-center text-[11px] font-bold leading-tight sm:size-28 sm:text-xs md:size-36 md:text-base"
+                  className={`relative flex size-20 shrink-0 items-center justify-center rounded-full border border-foreground bg-brand-cream text-center text-[10px] font-bold leading-tight sm:size-24 sm:text-xs md:size-32 md:text-sm lg:size-52 lg:text-xl xl:size-60 xl:text-3xl ${index === 0 ? "" : "-ml-5 sm:-ml-6 md:-ml-8 lg:-ml-12 xl:-ml-15"
+                    } ${index % 2 === 1 ? "translate-y-4 sm:translate-y-5 md:translate-y-8 lg:translate-y-16 xl:translate-y-30" : ""}`}
+                  style={{ zIndex: index }}
                 >
-                  <Image src="/images/decorative/Ellipse 48.png" alt="" fill className="object-contain" />
-                  <span className="relative px-3">{field}</span>
+                  <span className="relative whitespace-pre-line px-3 text-white [-webkit-text-stroke:2px_black] [paint-order:stroke_fill]">
+                    {field}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <RecruitSection
+        <RecruitDownload
           href="#"
           heading={
             <>
-              詳しくはこちらから資料を
-              <br />
-              <span className="text-lg md:text-[40px]">ダウンロードしてね！</span>
+              <span className="text-lg md:text-[40px]">詳しくはこちらから資料を<br />ダウンロードしてね！</span>
             </>
           }
         />

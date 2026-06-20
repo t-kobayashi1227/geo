@@ -29,9 +29,9 @@ function GroupMarker() {
   return (
     <span
       aria-hidden="true"
-      className="inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-foreground bg-brand-purple md:size-8"
+      className="inline-flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-foreground bg-brand-purple md:size-7"
     >
-      <span className="size-2 rounded-full border border-foreground bg-white md:size-2.5" />
+      <span className="size-2 rounded-full border-2 border-foreground bg-white md:size-2.5" />
     </span>
   );
 }
@@ -88,7 +88,7 @@ export default function OrganizationPage() {
                   {officers.map((officer) => (
                     <div
                       key={officer.name}
-                      className="flex items-center gap-3 border-b border-dotted border-foreground py-3 text-sm md:gap-4 md:py-4 md:text-lg"
+                      className="flex items-center gap-3 bg-bottom bg-repeat-x bg-[length:15px_3px] bg-[image:repeating-linear-gradient(to_right,var(--color-foreground)_0_3px,transparent_3px_15px)] py-3 text-sm md:gap-4 md:py-4 md:text-lg"
                     >
                       <MemberMarker />
                       <span className="w-20 md:w-28">{officer.title}</span>

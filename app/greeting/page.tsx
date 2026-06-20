@@ -25,11 +25,11 @@ export default function GreetingPage() {
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <SectionTitle>理事挨拶</SectionTitle>
 
-            <p className="mx-auto mt-10 max-w-4xl text-center text-lg font-medium leading-relaxed md:mt-16 md:text-4xl">
+            <p className="mx-auto mt-10 text-center text-lg font-medium leading-relaxed md:mt-16 md:text-3xl">
               地質調査業は、地質・地盤・地下水など目に見えない地下の状態を、踏査・物理探査・ボーリング試験などを通じて調査・解析する仕事です。
             </p>
 
-            <div className="mt-10 space-y-4 text-justify text-sm leading-relaxed md:mt-16 md:text-base md:leading-loose">
+            <div className="mt-10 space-y-4 text-justify text-sm leading-relaxed md:mt-16 md:text-lg md:leading-loose">
               <p>
                 （一社）新潟県地質調査業協会は、昭和37年11月に県内で地質調査を営む4社で技術の研鑽、情報交換を目的として設立されました。現在は、会員企業20社、平成24年に設立50周年を迎えました。また、本協会は、北陸地質調査業協会に所属し、北陸地質調査業協会は、全国10ブロックから構成される一般社団法人全国地質調査業協会連合会に所属する会員団体です。
               </p>

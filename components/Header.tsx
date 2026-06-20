@@ -20,7 +20,7 @@ export function Header() {
           ロゴが入ります
         </Link>
 
-        <nav className="hidden items-center gap-8 text-base font-medium md:flex lg:gap-10 lg:text-lg">
+        <nav className="hidden items-center gap-10 text-lg font-medium lg:flex">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className="transition-opacity hover:opacity-70">
               {item.label}
@@ -30,23 +30,25 @@ export function Header() {
 
         <button
           type="button"
-          aria-label="メニューを開く"
+          aria-label={open ? "メニューを閉じる" : "メニューを開く"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex size-8 flex-col items-center justify-center gap-[7px] md:hidden"
+          className="relative size-8 lg:hidden"
         >
           <span
-            className={`h-1 w-7 rounded-full bg-current transition-transform ${open ? "translate-y-2 rotate-45" : ""}`}
+            className={`absolute left-1/2 top-1/2 h-1 w-7 -translate-x-1/2 rounded-full bg-current transition-transform ${open ? "rotate-45" : "-translate-y-2"}`}
           />
-          <span className={`h-1 w-7 rounded-full bg-current transition-opacity ${open ? "opacity-0" : ""}`} />
           <span
-            className={`h-1 w-7 rounded-full bg-current transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`}
+            className={`absolute left-1/2 top-1/2 h-1 w-7 -translate-x-1/2 rounded-full bg-current transition-opacity ${open ? "opacity-0" : ""}`}
+          />
+          <span
+            className={`absolute left-1/2 top-1/2 h-1 w-7 -translate-x-1/2 rounded-full bg-current transition-transform ${open ? "-rotate-45" : "translate-y-2"}`}
           />
         </button>
       </div>
 
       {open && (
-        <nav className="border-t border-black/10 bg-background px-4 py-4 md:hidden">
+        <nav className="border-t border-black/10 bg-background px-4 py-4 lg:hidden">
           <ul className="flex flex-col gap-4 text-base font-medium">
             {navItems.map((item) => (
               <li key={item.href}>

@@ -68,8 +68,10 @@ function CategoryMarker() {
   return (
     <span
       aria-hidden="true"
-      className="mt-1 inline-block size-4 shrink-0 rounded-full border border-foreground bg-brand-purple md:mt-1.5 md:size-[18px]"
-    />
+      className="inline-flex size-4 shrink-0 items-center justify-center rounded-full border-2 border-foreground bg-brand-purple bg-background md:size-7"
+    >
+      <span className="size-2 rounded-full bg-white border-2 border-foreground md:size-2.5" />
+    </span>
   );
 }
 
@@ -77,7 +79,7 @@ function ItemMarker() {
   return (
     <span
       aria-hidden="true"
-      className="inline-block size-2.5 shrink-0 rounded-full border border-foreground bg-brand-peach md:size-3.5"
+      className="inline-block size-2.5 shrink-0 rounded-full border border-foreground bg-brand-peach md:size-5"
     />
   );
 }
@@ -102,30 +104,30 @@ export default function BusinessPage() {
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <SectionTitle>事業内容・取り組み</SectionTitle>
 
-            <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-loose md:mt-16 md:text-xl">
+            <p className="mx-auto mt-10 text-center text-sm leading-relaxed md:mt-16 md:text-3xl">
               協会は、県民の安全、安心の向上と県土の保全のため、地質調査の技術の向上及び普及・啓発とともに地質調査業経営の総合的な改善発達を図り、その経済的、社会的地位を向上させ、もって公共の福祉に寄与することを目的としております。
               <br />
               その目的を達成するため、次の事業活動を行っております。
             </p>
 
-            <div className="mx-auto mt-10 max-w-3xl space-y-8 md:mt-16 md:space-y-10">
+            <div className="mx-auto mt-10 max-w-4xl space-y-8 md:mt-16 md:space-y-10">
               {activityCategories.map((category) => (
                 <div key={category.title}>
                   <div className="flex items-center gap-3 md:gap-4">
                     <CategoryMarker />
-                    <h3 className="text-sm font-bold leading-relaxed md:text-lg">{category.title}</h3>
+                    <h3 className="text-sm font-bold leading-relaxed md:text-3xl">{category.title}</h3>
                   </div>
 
-                  <ul className="mt-3 space-y-2 pl-7 md:mt-4 md:space-y-3 md:pl-[34px]">
+                  <ul className="mt-3 space-y-2 pl-7 md:mt-4 md:space-y-5 md:pl-[34px]">
                     {category.items.map((item) => (
                       <li key={item.label} className="flex items-center gap-2 md:gap-3">
                         <ItemMarker />
                         {item.href ? (
-                          <a href={item.href} className="text-xs underline md:text-base">
+                          <a href={item.href} className="text-xs underline md:text-lg">
                             {item.label}
                           </a>
                         ) : (
-                          <span className="text-xs md:text-base">{item.label}</span>
+                          <span className="text-xs md:text-lg">{item.label}</span>
                         )}
                       </li>
                     ))}
