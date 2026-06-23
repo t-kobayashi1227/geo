@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { RecruitSection } from "@/components/RecruitSection";
 import { SectionTitle } from "@/components/SectionTitle";
+import { MdArrowOutward } from "react-icons/md";
 
 const members = [
   { name: "旭調査設計(株)", address: "新潟市中央区幸西1-1-11", tel: "025-245-8345" },
@@ -33,10 +34,8 @@ function MemberBullet() {
   return (
     <span
       aria-hidden="true"
-      className="mt-1 inline-flex size-4 shrink-0 items-center justify-center rounded-full border border-foreground bg-brand-orange md:mt-1.5 md:size-5"
-    >
-      <span className="size-1.5 rounded-full border border-foreground bg-white md:size-2" />
-    </span>
+      className="mt-1 inline-block size-4 shrink-0 rounded-full border border-foreground bg-brand-peach md:size-5"
+    />
   );
 }
 
@@ -60,17 +59,23 @@ export default function MembersPage() {
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <SectionTitle>会員名簿</SectionTitle>
 
-            <div className="mx-auto mt-10 max-w-3xl divide-y divide-dotted divide-foreground md:mt-16">
+            <div className="mx-auto mt-10 max-w-3xl md:mt-16">
               {members.map((member) => (
-                <div key={member.name} className="flex items-start gap-3 py-4 md:gap-4 md:py-6">
+                <div
+                  key={member.name}
+                  className="flex items-start gap-3 bg-bottom bg-repeat-x bg-[length:15px_3px] bg-[image:repeating-linear-gradient(to_right,var(--color-foreground)_0_3px,transparent_3px_15px)] py-4 md:gap-4 md:py-6"
+                >
                   <MemberBullet />
                   <div className="space-y-1.5 text-sm md:space-y-2 md:text-lg">
                     <p className="font-bold">{member.name}</p>
                     <p>
-                      {member.address}／TEL：{member.tel}
+                      {member.address}
+                      <br className="md:hidden" />
+                      <span className="hidden md:inline">／</span>
+                      TEL：{member.tel}
                     </p>
-                    <Link href="#" className="inline-block underline">
-                      Website ›
+                    <Link href="#" className="inline-flex items-center gap-1 whitespace-nowrap underline">
+                      Website <MdArrowOutward className="size-5 md:size-7" />
                     </Link>
                   </div>
                 </div>

@@ -19,10 +19,30 @@
   --color-brand-orange: #ff8604;
   --color-brand-purple: #abacff;
   --color-brand-peach: #ffb9ab;
+  --color-brand-cream: #fadca6;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .dotted-box {
+    --dot-size: 3px;
+    --dot-gap: 12px;
+    background-image:
+      repeating-linear-gradient(to right, var(--color-foreground) 0 var(--dot-size), transparent var(--dot-size) calc(var(--dot-size) + var(--dot-gap))),
+      repeating-linear-gradient(to right, var(--color-foreground) 0 var(--dot-size), transparent var(--dot-size) calc(var(--dot-size) + var(--dot-gap))),
+      repeating-linear-gradient(to bottom, var(--color-foreground) 0 var(--dot-size), transparent var(--dot-size) calc(var(--dot-size) + var(--dot-gap))),
+      repeating-linear-gradient(to bottom, var(--color-foreground) 0 var(--dot-size), transparent var(--dot-size) calc(var(--dot-size) + var(--dot-gap)));
+    background-size:
+      calc(var(--dot-size) + var(--dot-gap)) var(--dot-size),
+      calc(var(--dot-size) + var(--dot-gap)) var(--dot-size),
+      var(--dot-size) calc(var(--dot-size) + var(--dot-gap)),
+      var(--dot-size) calc(var(--dot-size) + var(--dot-gap));
+    background-position: top left, bottom left, top left, top right;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  }
 }

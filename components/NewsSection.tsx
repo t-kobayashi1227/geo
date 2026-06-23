@@ -18,8 +18,8 @@ export function NewsSection() {
               key={i}
               className="flex flex-col gap-1 border-b border-black py-4 md:flex-row md:items-baseline md:gap-8 md:py-5"
             >
-              <span className="text-sm md:text-base">{item.date}</span>
-              <span className="text-sm md:text-base">{item.description}</span>
+              <span className="text-sm px-3 md:text-base">{item.date}</span>
+              <span className="text-sm px-3 md:text-base">{item.description}</span>
             </div>
           ))}
         </div>

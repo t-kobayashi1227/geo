@@ -47,23 +47,23 @@ export function AssociationSection() {
       <div className="mx-auto max-w-[1280px] px-4 md:px-10">
         <SectionTitle>協会案内</SectionTitle>
 
-        <div className="mx-auto mt-10 grid grid-cols-2 gap-4 justify-items-center md:mt-16 md:max-w-[818px] md:gap-x-[42px] md:gap-y-8">
+        <div className="mx-auto mt-10 grid grid-cols-2 gap-4 justify-items-center md:mt-16 max-w-[390px] md:max-w-[818px] md:gap-x-[42px] md:gap-y-12">
           {cards.map((card) => (
-            <Link key={card.href} href={card.href} className="group flex max-w-[388px] flex-col">
-              <div className="flex h-[423px] flex-col items-center justify-between gap-4 rounded-[20px] bg-brand-blue px-4 pt-6 pb-4 md:rounded-[32px] md:px-8 md:pb-6 md:pt-15">
+            <Link key={card.href} href={card.href} className="group flex max-w-[220px] flex-col md:max-w-[388px]">
+              <div className="flex h-[220px] flex-col items-center justify-between gap-4 rounded-[20px] bg-brand-blue px-4 pt-6 pb-4 md:h-[423px] md:rounded-[32px] md:px-8 md:pb-6 md:pt-15">
                 <Image
                   src={card.image}
                   alt=""
                   width={card.width}
                   height={card.height}
-                  className="h-24 w-auto sm:h-28 md:h-[200px]"
+                  className="h-24 w-auto md:h-[200px]"
                 />
                 <div className="flex flex-col items-center gap-1 pb-1 md:gap-2 md:pb-2">
-                  <span className="text-sm font-medium sm:text-base md:text-xl">{card.title}</span>
-                  <ArrowCircle className="size-6 text-base md:size-[33px] md:text-2xl" />
+                  <span className="text-sm font-medium md:text-xl">{card.title}</span>
+                  <ArrowCircle className="mt-2 size-3 text-base md:size-[33px] md:text-2xl" />
                 </div>
               </div>
-              <p className="mt-3 text-xs leading-relaxed sm:text-sm md:text-base">{card.description}</p>
+              <p className="mt-4 text-xs leading-relaxed md:text-base">{card.description}</p>
             </Link>
           ))}
         </div>
@@ -71,10 +71,10 @@ export function AssociationSection() {
         <div className="mt-10 flex justify-center md:mt-16">
           <Link
             href="/about"
-            className="flex items-center gap-3 rounded-full bg-brand-blue px-8 py-3 text-base font-medium md:gap-4 md:px-12 md:py-4 md:text-xl"
+            className="relative flex w-[390px] items-center justify-center rounded-full bg-brand-blue py-3 text-base font-medium md:py-4 md:text-xl"
           >
             詳しく見る
-            <ArrowCircle className="size-6 text-base md:size-[33px] md:text-2xl" />
+            <ArrowCircle className="absolute right-4 size-6 text-base md:right-6 md:size-[33px] md:text-2xl" />
           </Link>
         </div>
       </div>
