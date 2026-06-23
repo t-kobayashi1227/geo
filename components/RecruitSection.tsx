@@ -18,7 +18,7 @@ export function RecruitSection({
   href?: string;
 }) {
   return (
-    <section className="bg-background pb-16 md:pb-24">
+    <section className="py-16 md:py-24 bg-background pb-16 md:pb-24">
       <div className="mx-auto max-w-[1280px] px-4 md:px-10">
         <Link
           href={href}
