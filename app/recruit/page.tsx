@@ -317,6 +317,20 @@ export default function RecruitPage() {
         </section>
 
         <section className="bg-background pb-16 md:pb-24">
+          <div className="mx-auto max-w-[1280px] md:px-10">
+            <div className="flex justify-center">
+              <Image
+                src="/images/illustrations/work_introduce.png"
+                alt=""
+                width={1280}
+                height={1919}
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-background pb-16 md:pb-24">
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <div className="mx-auto mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:gap-6">
               {categories.map((category) => (

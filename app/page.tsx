@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { NewsSection } from "@/components/NewsSection";
 import { RecruitSection } from "@/components/RecruitSection";
+import { VideoSection } from "@/components/VideoSection";
 
 export default function Home() {
   return (
@@ -13,9 +14,10 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <AboutSection />
+        <RecruitSection />
         <NewsSection />
         <AssociationSection />
-        <RecruitSection />
+        <VideoSection />
       </main>
       <Footer />
     </div>
