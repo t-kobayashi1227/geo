@@ -357,13 +357,18 @@ export default function RecruitPage() {
 
         <section className="bg-background pb-16 md:pb-24">
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
-            <div className="flex justify-center">
+            <h2 className="flex w-full items-center justify-center text-left tracking-[0.5em] text-2xl font-bold leading-snug [writing-mode:vertical-rl] md:text-4xl">
+              実際に
+              <br />
+              どんなことをするの？
+            </h2>
+            <div className="flex justify-center mt-5">
               <Image
-                src="/images/illustrations/human_houses.png"
+                src="/images/illustrations/fieldwork.png"
                 alt=""
-                width={550}
-                height={327}
-                className="h-28 w-auto md:h-40"
+                width={758}
+                height={524}
+                className="h-52 w-auto md:h-75"
               />
             </div>
             <div className="mt-4 md:mt-6">
@@ -392,11 +397,11 @@ export default function RecruitPage() {
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <div className="flex justify-center">
               <Image
-                src="/images/illustrations/ChatGPT Image 2026年5月19日 14_46_26 1.png"
+                src="/images/illustrations/officework.png"
                 alt=""
-                width={269}
-                height={269}
-                className="h-28 w-auto md:h-40"
+                width={473}
+                height={465}
+                className="h-52 w-auto md:h-75"
               />
             </div>
             <div className="mt-4 md:mt-6">

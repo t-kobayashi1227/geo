@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 import { FaPlay } from "react-icons/fa6";
 
 const videos = [
@@ -19,6 +21,8 @@ function getYoutubeVideoId(url: string) {
 }
 
 export function VideoSection() {
+  const [playingNo, setPlayingNo] = useState<string | null>(null);
+
   return (
     <section className="bg-background pb-16 md:pb-24">
       <div className="mx-auto max-w-[1280px] px-4 md:px-10">
@@ -28,33 +32,45 @@ export function VideoSection() {
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 mt-10 md:mt-16 md:gap-x-10 md:gap-y-8">
           {videos.map((video) => {
             const videoId = getYoutubeVideoId(video.href);
+            const isPlaying = playingNo === video.no;
             return (
-              <Link
-                key={video.no}
-                href={video.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col gap-2 md:gap-3"
-              >
+              <div key={video.no} className="group flex flex-col gap-2 md:gap-3">
                 <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-[12px] bg-brand-gray md:rounded-[16px]">
-                  {videoId && (
-                    <Image
-                      src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                      alt=""
-                      fill
-                      sizes="(min-width: 896px) 440px, 50vw"
-                      className="object-cover"
+                  {isPlaying && videoId ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 size-full"
                     />
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setPlayingNo(video.no)}
+                      className="absolute inset-0 flex size-full items-center justify-center"
+                      aria-label={`${video.title} を再生`}
+                    >
+                      {videoId && (
+                        <Image
+                          src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                          alt=""
+                          fill
+                          sizes="(min-width: 896px) 440px, 50vw"
+                          className="object-cover"
+                        />
+                      )}
+                      <span className="relative flex size-10 items-center justify-center rounded-full bg-white/90 text-brand-gray transition-transform group-hover:scale-110 md:size-14">
+                        <FaPlay className="ml-0.5 text-base md:text-xl" />
+                      </span>
+                    </button>
                   )}
-                  <span className="relative flex size-10 items-center justify-center rounded-full bg-white/90 text-brand-gray transition-transform group-hover:scale-110 md:size-14">
-                    <FaPlay className="ml-0.5 text-base md:text-xl" />
-                  </span>
                 </div>
                 <p className="text-xs leading-snug md:text-base">
                   <span className="font-bold">【第{video.no}弾】</span>
                   {video.title}
                 </p>
-              </Link>
+              </div>
             );
           })}
         </div>
