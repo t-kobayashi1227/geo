@@ -270,7 +270,7 @@ export default function RecruitPage() {
     <div id="top" className="flex min-h-full flex-1 flex-col bg-background">
       <Header />
       <main className="flex-1">
-        <PageHero illustration="イラストor写真" />
+        <PageHero />
 
         <section className="bg-background pt-16 pb-16 md:pt-24 md:pb-24">
           <div className="flex flex-col md:flex-row mx-auto max-w-[1280px] px-4 md:px-10">
@@ -281,7 +281,7 @@ export default function RecruitPage() {
                   alt=""
                   width={416}
                   height={279}
-                  className="h-28 w-auto md:h-40"
+                  className="h-35 w-auto md:h-75"
                 />
               </div>
               <h2 className="text-left tracking-[0.5em] text-2xl font-bold leading-snug [writing-mode:vertical-rl] md:text-4xl">
@@ -336,7 +336,7 @@ export default function RecruitPage() {
               {categories.map((category) => (
                 <div
                   key={category.title}
-                  className={`relative flex flex-col justify-center mx-auto max-w-[535px] h-[286px] w-full rounded-[16px] px-4 py-4 md:rounded-[45px] md:px-6 md:py-5 ${category.color} ${category.full ? "sm:col-span-2" : "max-w-[535px]"
+                  className={`relative flex flex-col justify-center mx-auto max-w-[535px] h-[286px] w-full rounded-[45px] px-4 py-4 md:px-6 md:py-5 ${category.color} ${category.full ? "sm:col-span-2" : "max-w-[535px]"
                     }`}
                 >
                   <DashedBorder dashLength={8} gapLength={12} strokeWidth={3} />
@@ -372,11 +372,11 @@ export default function RecruitPage() {
               />
             </div>
             <div className="mt-4 md:mt-6">
-              <SectionTitle>フィールドワーク</SectionTitle>
+              <SectionTitle>①フィールドワーク</SectionTitle>
             </div>
-            <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-2xl">
+            {/* <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-2xl">
               (地質・地盤の診断を行うための地中情報を取得します)
-            </p>
+            </p> */}
 
             <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
               <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-6">
@@ -405,11 +405,11 @@ export default function RecruitPage() {
               />
             </div>
             <div className="mt-4 md:mt-6">
-              <SectionTitle>オフィスワーク</SectionTitle>
+              <SectionTitle>②オフィスワーク</SectionTitle>
             </div>
-            <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-2xl">
+            {/* <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-2xl">
               (得られた地中情報を分析・診断して工事などに役立てる地質エンジニア！)
-            </p>
+            </p> */}
 
             <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
               <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-6">

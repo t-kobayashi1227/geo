@@ -24,9 +24,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-background">
-      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-4 md:h-[86px] md:px-10">
-        <Link href="/" className="text-base font-bold md:text-2xl">
-          ロゴが入ります
+      <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-4 md:h-[86px] md:px-10">
+        <Link href="/">
+          <Image
+            src="/images/illustrations/logo_geo.png"
+            alt="新潟県地質調査業協会"
+            width={1800}
+            height={330}
+            className="h-9 w-auto md:h-15"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-10 text-lg font-medium lg:flex">

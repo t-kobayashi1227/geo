@@ -89,7 +89,7 @@ export default function BusinessPage() {
     <div id="top" className="flex min-h-full flex-1 flex-col bg-background">
       <Header />
       <main className="flex-1">
-        <PageHero illustration="イラストor写真" />
+        <PageHero />
 
         <section className="bg-background pt-16 pb-16 md:pt-24 md:pb-24">
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">

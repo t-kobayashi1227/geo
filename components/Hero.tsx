@@ -1,16 +1,12 @@
+import { HeroLabels } from "./HeroLabels";
 import { PageHero } from "./PageHero";
 
 export function Hero() {
   return (
-    <PageHero
-      illustration="イラストが入ります"
-      note={
-        <>
-          ※イラストデザインに合わせて
-          <br />
-          背景色を調整します。
-        </>
-      }
-    />
+    <div className="mb-[60px] md:mb-[64px]">
+      <PageHero>
+        <HeroLabels />
+      </PageHero>
+    </div>
   );
 }
