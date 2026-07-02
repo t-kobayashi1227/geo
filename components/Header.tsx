@@ -114,7 +114,7 @@ export function Header() {
                 <span className="font-doodle block text-[11px] font-bold tracking-[3px] text-white/85">RECRUIT</span>
                 <span className="mt-0.5 block text-sm font-bold text-white">地質エンジニアになりませんか？</span>
               </span>
-              <ArrowCircle className="size-[30px]" />
+              <ArrowCircle size="size-[30px]" />
             </Link>
           </div>
         </div>

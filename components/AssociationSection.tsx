@@ -3,14 +3,10 @@ import Link from "next/link";
 import { ArrowCircle } from "./ArrowCircle";
 import { SectionTitle } from "./SectionTitle";
 
-const description =
-  "説明文が入ります。説明文が入ります。説明文が入ります。説明文が入ります。";
-
 const cards = [
   {
     title: "理事挨拶",
     href: "/greeting",
-    description,
     image: "/images/illustrations/chair_man.png",
     width: 247,
     height: 245,
@@ -18,7 +14,6 @@ const cards = [
   {
     title: "事業内容・取り組み",
     href: "/business",
-    description,
     image: "/images/illustrations/Research.png",
     width: 217,
     height: 231,
@@ -26,7 +21,6 @@ const cards = [
   {
     title: "組織・役員・委員会",
     href: "/organization",
-    description,
     image: "/images/illustrations/folder_kun.png",
     width: 267,
     height: 258,
@@ -34,7 +28,6 @@ const cards = [
   {
     title: "会員名簿",
     href: "/members",
-    description,
     image: "/images/illustrations/Location_book.png",
     width: 297,
     height: 258,
@@ -49,7 +42,7 @@ export function AssociationSection() {
 
         <div className="mx-auto mt-10 grid grid-cols-2 gap-4 justify-items-center md:mt-16 max-w-[390px] md:max-w-[818px] md:gap-x-[42px] md:gap-y-12">
           {cards.map((card) => (
-            <Link key={card.href} href={card.href} className="group flex max-w-[220px] flex-col md:max-w-[388px]">
+            <Link key={card.href} href={card.href} className="group flex w-full max-w-[220px] flex-col md:max-w-[388px]">
               <div className="flex h-[220px] flex-col items-center justify-between gap-4 rounded-[20px] bg-brand-blue px-4 pt-6 pb-4 md:h-[423px] md:rounded-[32px] md:px-8 md:pb-6 md:pt-15">
                 <Image
                   src={card.image}
@@ -63,7 +56,6 @@ export function AssociationSection() {
                   <ArrowCircle className="mt-2 size-3 text-base md:size-[33px] md:text-2xl" />
                 </div>
               </div>
-              <p className="mt-4 text-xs leading-relaxed md:text-base">{card.description}</p>
             </Link>
           ))}
         </div>
