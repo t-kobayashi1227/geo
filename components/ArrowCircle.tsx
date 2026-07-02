@@ -1,10 +1,22 @@
-import { FaArrowRightLong } from "react-icons/fa6"; export function ArrowCircle({ className = "" }: { className?: string }) {
+import { FaArrowRightLong } from "react-icons/fa6";
+
+export function ArrowCircle({
+  className = "",
+  size = "size-[33px]",
+  bgColor = "bg-white",
+  iconColor = "text-black",
+}: {
+  className?: string;
+  size?: string;
+  bgColor?: string;
+  iconColor?: string;
+}) {
   return (
     <span
-      className={`inline-flex size-[33px] shrink-0 items-center justify-center rounded-full bg-white text-2xl font-bold text-black ${className}`}
+      className={`inline-flex shrink-0 items-center justify-center rounded-full ${size} ${bgColor} ${iconColor} ${className}`}
       aria-hidden="true"
     >
-      <FaArrowRightLong color="black" size={16} />
+      <FaArrowRightLong color="currentColor" size={16} />
     </span>
   );
 }

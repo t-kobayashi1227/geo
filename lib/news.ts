@@ -29,12 +29,12 @@ export function formatNewsDate(isoDate: string) {
   return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
 }
 
-export async function getNewsItems(limit?: number) {
-  const { contents } = await client.getList<NewsItem>({
+export async function getNewsItems(limit?: number, offset?: number) {
+  const result = await client.getList<NewsItem>({
     endpoint: "news",
-    queries: { limit, orders: "-data" },
+    queries: { limit, offset, orders: "-data" },
   });
-  return contents;
+  return { contents: result.contents, totalCount: result.totalCount };
 }
 
 export async function getNewsItem(id: string) {

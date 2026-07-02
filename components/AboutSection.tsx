@@ -2,29 +2,14 @@ import Image from "next/image";
 
 export function AboutSection() {
   return (
-    <section className="relative -mt-15 overflow-hidden rounded-t-[40px] bg-brand-brown pt-16 pb-16 text-white md:-mt-16 md:rounded-[61px] md:pt-24 md:pb-24">
-      <div className="pointer-events-none absolute left-1/2 top-0 w-[832px] -translate-x-1/2 -translate-y-[55%] mt-10">
-        <Image
-          alt=""
-          className="w-full"
-          src="/images/decorative/Polygon1.png"
-          width={832}
-          height={75}
-          priority
-        />
-      </div>
+    <section className="relative -mt-15 overflow-hidden bg-brand-brown pt-16 pb-16 text-white 
+        mt-[-70px] rounded-[20px] pt-12 pb-24 [clip-path:polygon(0_0,20%_0,50%_2%,80%_0,100%_0,100%_100%,0_100%)] 
+        md:mt-[-90px] md:rounded-[30px] md:pt-12 md:pb-24 md:[clip-path:polygon(0_0,20%_0,50%_20px,80%_0,100%_0,100%_100%,0_100%)] 
+        lg:mt-[-100px] lg:rounded-[40px] lg:pt-24 lg:[clip-path:polygon(0_0,20%_0,50%_3%,80%_0,100%_0,100%_100%,0_100%)]
+        xl:mt-[-115px] xl:rounded-[50px] xl:pt-36 xl:[clip-path:polygon(0_0,20%_0,50%_4%,80%_0,100%_0,100%_100%,0_100%)]
+        ">
 
       <div className="relative mx-auto flex max-w-[1280px] flex-col px-4 md:px-10 mt-10">
-        <div className="pointer-events-none absolute right-10 top-10 z-10 w-20 md:hidden">
-          <Image
-            alt=""
-            className="w-full"
-            src="/images/illustrations/insect.png"
-            width={91}
-            height={53}
-          />
-        </div>
-
         <div className="absolute z-10 mx-auto mb-8 w-[160px] sm:w-[200px] md:w-[220px] lg:left-[calc(50%-380px)] lg:top-[-28px] lg:mx-0 lg:mb-0 lg:w-[250px]">
           <Image
             alt=""
