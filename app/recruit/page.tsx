@@ -332,23 +332,34 @@ export default function RecruitPage() {
 
         <section className="bg-background pb-16 md:pb-24">
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
-            <div className="mx-auto mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:gap-6">
-              {categories.map((category) => (
+            <div className="mx-auto mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:gap-10">
+              {categories.map((category, index) => (
                 <div
                   key={category.title}
-                  className={`relative flex flex-col justify-center mx-auto max-w-[535px] h-[286px] w-full rounded-[45px] px-4 py-4 md:px-6 md:py-5 ${category.color} ${category.full ? "sm:col-span-2" : "max-w-[535px]"
-                    }`}
+                  className={`flex flex-col ${category.full ? "sm:col-span-2" : ""}`}
                 >
-                  <DashedBorder dashLength={8} gapLength={12} strokeWidth={3} />
-                  <div className="flex items-center justify-center gap-2 md:gap-3">
-                    <CategoryDot />
-                    <h3 className="whitespace-pre-line text-sm font-bold leading-snug md:text-3xl">
-                      {category.title}
-                    </h3>
+                  <div
+                    className={`relative flex flex-col justify-center mx-auto max-w-[535px] h-[286px] w-full rounded-[45px] px-4 py-4 md:px-6 md:py-5 ${category.color} ${category.full ? "" : "max-w-[535px]"
+                      }`}
+                  >
+                    <DashedBorder dashLength={8} gapLength={12} strokeWidth={3} />
+                    <div className="flex items-center justify-center gap-2 md:gap-3">
+                      <CategoryDot />
+                      <h3 className="whitespace-pre-line text-sm font-bold leading-snug md:text-3xl">
+                        {category.title}
+                      </h3>
+                    </div>
+                    <p className="mt-2 whitespace-pre-line text-center text-xs leading-relaxed md:mt-3 md:text-3xl">
+                      {category.description}
+                    </p>
                   </div>
-                  <p className="mt-2 whitespace-pre-line text-center text-xs leading-relaxed md:mt-3 md:text-3xl">
-                    {category.description}
-                  </p>
+                  {index < categories.length - 1 && (
+                    <div
+                      className={`mx-auto mt-4 w-full md:mt-10 ${category.full ? "" : "max-w-[535px]"}`}
+                    >
+                      <DashedLine dashLength={8} gapLength={10} strokeWidth={1} />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -374,17 +385,13 @@ export default function RecruitPage() {
             <div className="mt-4 md:mt-6">
               <SectionTitle>①フィールドワーク</SectionTitle>
             </div>
-            {/* <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-2xl">
-              (地質・地盤の診断を行うための地中情報を取得します)
-            </p> */}
-
             <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
-              <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-6">
+              <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-10">
                 {fieldWorkTypes.slice(0, 4).map((type) => (
                   <TypeCard key={type.no} theme="green" {...type} />
                 ))}
               </div>
-              <div className="mt-4 flex justify-center lg:mt-6">
+              <div className="mt-4 flex justify-center lg:mt-10">
                 <div className="w-[290px] lg:w-[calc(50%-0.75rem)]">
                   <TypeCard theme="green" {...fieldWorkTypes[4]} />
                 </div>
@@ -407,17 +414,13 @@ export default function RecruitPage() {
             <div className="mt-4 md:mt-6">
               <SectionTitle>②オフィスワーク</SectionTitle>
             </div>
-            {/* <p className="mt-2 text-center text-xs leading-relaxed md:mt-3 md:text-2xl">
-              (得られた地中情報を分析・診断して工事などに役立てる地質エンジニア！)
-            </p> */}
-
             <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
-              <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-6">
+              <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-10">
                 {officeWorkTypes.slice(0, 2).map((type) => (
                   <TypeCardOfficeWork key={type.no} theme="blue" {...type} />
                 ))}
               </div>
-              <div className="mt-4 flex justify-center lg:mt-6">
+              <div className="mt-4 flex justify-center lg:mt-10">
                 <div className="w-[290px] lg:w-[calc(50%-0.75rem)]">
                   <TypeCardOfficeWork theme="blue" {...officeWorkTypes[2]} />
                 </div>

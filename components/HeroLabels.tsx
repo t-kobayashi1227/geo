@@ -1,36 +1,92 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const DESCRIPTION = "今後説明文を追加します";
 
-const labels = [
-  { id: "kobutsu", label: "鉱物資源", x: 6, y: 32 },
-  { id: "dam", label: "ダム", x: 25, y: 26 },
-  { id: "douro-bou", label: "道路防災点検", x: 36, y: 25 },
-  { id: "shamen", label: "斜面防災", x: 42, y: 20 },
-  { id: "kazan", label: "火山防災", x: 46, y: 9 },
-  { id: "dosya", label: "土砂災害", x: 50, y: 24 },
-  { id: "saisei", label: "再生可能エネルギー", x: 64, y: 29 },
-  { id: "tunnel", label: "トンネル", x: 72, y: 23 },
-  { id: "kiridome", label: "切土", x: 90, y: 26 },
-  { id: "tameike", label: "ため池点検", x: 82, y: 37 },
-  { id: "douro-mori", label: "道路・盛土", x: 70, y: 48 },
-  { id: "jisuberi", label: "地すべり施設点検", x: 52, y: 43 },
-  { id: "yoheki", label: "擁壁", x: 32, y: 39 },
-  { id: "katsudan", label: "活断層", x: 27, y: 45 },
-  { id: "kuko", label: "空港", x: 16, y: 58 },
-  { id: "hazard", label: "ハザードマップ", x: 38, y: 48 },
-  { id: "kyoryo", label: "橋梁", x: 43, y: 63 },
-  { id: "kasen", label: "河川", x: 42, y: 74 },
-  { id: "chikasui-o", label: "地下水汚染", x: 38, y: 78 },
-  { id: "koman", label: "港湾", x: 20.5, y: 81.5 },
-  { id: "chikasui-r", label: "地下水利用・土壌汚染対策", x: 35, y: 90 },
-  { id: "ekijoka", label: "地盤の液状化", x: 66, y: 90 },
-  { id: "jutaku", label: "住宅", x: 72.5, y: 77.5 },
-  { id: "daikibo", label: "大規模建築物", x: 78, y: 56 },
-  { id: "kosou", label: "高層建築物", x: 93, y: 73 },
-  { id: "kankyo", label: "環境・地下水保全", x: 92, y: 53.5 },
+type ImageLabel = {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  image: string;
+  imgWidth: number;
+  imgHeight: number;
+  size?: string;
+};
+
+const labels: ImageLabel[] = [
+  {
+    id: "kuko",
+    label: "空港",
+    x: 13,
+    y: 52,
+    image: "/images/illustrations/airport_transparent.png",
+    imgWidth: 1500,
+    imgHeight: 972,
+    size: "15%",
+  },
+  {
+    id: "building",
+    label: "高層建築物・大規模建築物",
+    x: 82.5,
+    y: 53,
+    image: "/images/illustrations/building_transparent.png",
+    imgWidth: 1373,
+    imgHeight: 1120,
+    size: "12%",
+  },
+  {
+    id: "dosya",
+    label: "土砂災害",
+    x: 47.5,
+    y: 31.5,
+    image: "/images/illustrations/disaster_transparent.png",
+    imgWidth: 1095,
+    imgHeight: 1172,
+    size: "10%",
+  },
+  {
+    id: "tunnel",
+    label: "トンネル",
+    x: 76.5,
+    y: 30.5,
+    image: "/images/illustrations/tunnel_transparent_padded50.png",
+    imgWidth: 176,
+    imgHeight: 252,
+    size: "3.5%",
+  },
+  {
+    id: "mineral",
+    label: "鉱物資源",
+    x: 8.5,
+    y: 27,
+    image: "/images/illustrations/mineral_transparent_padded50.png",
+    imgWidth: 176,
+    imgHeight: 252,
+    size: "3.5%",
+  },
+  {
+    id: "house",
+    label: "住宅",
+    x: 56,
+    y: 56.5,
+    image: "/images/illustrations/house_transparent.png",
+    imgWidth: 798,
+    imgHeight: 594,
+    size: "7.8%",
+  },
+  {
+    id: "pollution",
+    label: "地下水汚染・土壌汚染",
+    x: 39.9,
+    y: 83,
+    image: "/images/illustrations/pollution_transparent.png",
+    imgWidth: 757,
+    imgHeight: 344,
+    size: "8%",
+  },
 ];
 
 export function HeroLabels() {
@@ -43,14 +99,25 @@ export function HeroLabels() {
         <div
           key={item.id}
           className="absolute -translate-x-1/2 -translate-y-1/2 [perspective:400px]"
-          style={{ left: `${item.x}%`, top: `${item.y}%` }}
+          style={{
+            left: `${item.x}%`,
+            top: `${item.y}%`,
+            width: item.size ?? "clamp(100px,11%,180px)",
+          }}
         >
           <button
             type="button"
             onClick={() => setActiveId(item.id)}
-            className="cursor-pointer whitespace-nowrap rounded-full border-[clamp(2px,0.2vw,4px)] border-white bg-[#eba371] px-3 py-1 text-xs font-bold text-white shadow-sm [transform:rotateY(0deg)] transition-transform duration-500 hover:[transform:rotateY(360deg)] md:text-[clamp(10px,1.1vw,18px)]"
+            className="block w-full cursor-pointer [transform:rotateY(0deg)] transition-transform duration-1200 hover:[transform:rotateY(360deg)]"
           >
-            {item.label}
+            <Image
+              src={item.image}
+              alt={item.label}
+              width={item.imgWidth}
+              height={item.imgHeight}
+              className="h-auto w-full"
+              draggable={false}
+            />
           </button>
         </div>
       ))}
