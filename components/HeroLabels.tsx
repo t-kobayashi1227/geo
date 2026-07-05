@@ -20,72 +20,72 @@ const labels: ImageLabel[] = [
   {
     id: "kuko",
     label: "空港",
-    x: 10,
-    y: 55,
+    x: 13,
+    y: 52,
     image: "/images/illustrations/airport_transparent.png",
     imgWidth: 1500,
     imgHeight: 972,
-
+    size: "15%",
   },
   {
     id: "building",
     label: "高層建築物・大規模建築物",
-    x: 79,
-    y: 47,
+    x: 82.5,
+    y: 53,
     image: "/images/illustrations/building_transparent.png",
     imgWidth: 1373,
     imgHeight: 1120,
-    size: "clamp(110px,12vw,200px)",
+    size: "12%",
   },
   {
     id: "dosya",
     label: "土砂災害",
-    x: 50,
-    y: 25,
+    x: 47.5,
+    y: 31.5,
     image: "/images/illustrations/disaster_transparent.png",
     imgWidth: 1095,
     imgHeight: 1172,
-    size: "clamp(90px,9vw,150px)",
+    size: "10%",
   },
   {
     id: "tunnel",
     label: "トンネル",
-    x: 73,
-    y: 23,
+    x: 76.5,
+    y: 30.5,
     image: "/images/illustrations/tunnel_transparent.png",
     imgWidth: 176,
     imgHeight: 252,
-    size: "clamp(35px,3.5vw,60px)",
+    size: "1.6%",
   },
   {
     id: "mineral",
     label: "鉱物資源",
-    x: 27,
-    y: 29,
+    x: 8.5,
+    y: 27,
     image: "/images/illustrations/mineral_transparent.png",
     imgWidth: 176,
     imgHeight: 252,
-    size: "clamp(35px,3.5vw,60px)",
+    size: "1.6%",
   },
   {
     id: "house",
     label: "住宅",
-    x: 50,
-    y: 52,
+    x: 56,
+    y: 56.5,
     image: "/images/illustrations/house_transparent.png",
     imgWidth: 798,
     imgHeight: 594,
-    size: "clamp(90px,9vw,150px)",
+    size: "7.8%",
   },
   {
     id: "pollution",
     label: "地下水汚染・土壌汚染",
-    x: 57,
-    y: 64,
+    x: 39.9,
+    y: 83,
     image: "/images/illustrations/pollution_transparent.png",
     imgWidth: 757,
     imgHeight: 344,
-    size: "clamp(90px,9vw,150px)",
+    size: "8%",
   },
 ];
 
@@ -99,13 +99,16 @@ export function HeroLabels() {
         <div
           key={item.id}
           className="absolute -translate-x-1/2 -translate-y-1/2 [perspective:400px]"
-          style={{ left: `${item.x}%`, top: `${item.y}%` }}
+          style={{
+            left: `${item.x}%`,
+            top: `${item.y}%`,
+            width: item.size ?? "clamp(100px,11%,180px)",
+          }}
         >
           <button
             type="button"
             onClick={() => setActiveId(item.id)}
-            className="block cursor-pointer [transform:rotateY(0deg)] transition-transform duration-500 hover:[transform:rotateY(360deg)]"
-            style={{ width: item.size ?? "clamp(100px,11vw,180px)" }}
+            className="block w-full cursor-pointer [transform:rotateY(0deg)] transition-transform duration-500 hover:[transform:rotateY(360deg)]"
           >
             <Image
               src={item.image}
