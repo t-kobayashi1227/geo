@@ -20,7 +20,7 @@ export function Hero({
       <section className="relative text-white">
         <div className="relative w-full">
           <Image
-            src="/images/illustrations/top_Mobile.png"
+            src="/images/illustrations/20260629-1.jpg"
             alt=""
             width={10667}
             height={6000}
@@ -28,7 +28,7 @@ export function Hero({
             priority
           />
           <Image
-            src="/images/illustrations/top_PC.png"
+            src="/images/illustrations/20260629.jpg"
             alt=""
             width={10667}
             height={6000}
