@@ -52,20 +52,20 @@ const labels: ImageLabel[] = [
     label: "トンネル",
     x: 76.5,
     y: 30.5,
-    image: "/images/illustrations/tunnel_transparent.png",
+    image: "/images/illustrations/tunnel_transparent_padded50.png",
     imgWidth: 176,
     imgHeight: 252,
-    size: "1.6%",
+    size: "3.5%",
   },
   {
     id: "mineral",
     label: "鉱物資源",
     x: 8.5,
     y: 27,
-    image: "/images/illustrations/mineral_transparent.png",
+    image: "/images/illustrations/mineral_transparent_padded50.png",
     imgWidth: 176,
     imgHeight: 252,
-    size: "1.6%",
+    size: "3.5%",
   },
   {
     id: "house",
@@ -108,7 +108,7 @@ export function HeroLabels() {
           <button
             type="button"
             onClick={() => setActiveId(item.id)}
-            className="block w-full cursor-pointer [transform:rotateY(0deg)] transition-transform duration-500 hover:[transform:rotateY(360deg)]"
+            className="block w-full cursor-pointer [transform:rotateY(0deg)] transition-transform duration-1200 hover:[transform:rotateY(360deg)]"
           >
             <Image
               src={item.image}
