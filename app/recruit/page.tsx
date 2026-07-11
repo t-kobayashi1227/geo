@@ -42,7 +42,6 @@ const categories = [
     title: "地下資源開発・学術調査等\n（活断層・学術調査等）",
     description: "石炭・石油・鉱物資源・\n地熱地中熱・地下空間を利用した\n資源開発 地震における活断層分野",
     color: "bg-[#FFA5BE]",
-    full: true,
   },
 ];
 
@@ -172,6 +171,38 @@ function CategoryDot({ className = "" }: { className?: string }) {
   );
 }
 
+function CategoryCard({
+  category,
+  showDivider,
+}: {
+  category: (typeof categories)[number];
+  showDivider: boolean;
+}) {
+  return (
+    <div className="flex flex-col">
+      <div
+        className={`relative flex flex-col justify-center mx-auto h-[190px] w-full max-w-[350px] rounded-[42px] px-3 py-3 sm:max-w-[535px] md:h-[286px] md:rounded-[45px] md:px-6 md:py-5 ${category.color}`}
+      >
+        <DashedBorder dashLength={8} gapLength={12} strokeWidth={3} />
+        <div className="flex items-start justify-center gap-2 md:gap-3">
+          <CategoryDot className="mt-0.5 md:mt-2.5" />
+          <h3 className="whitespace-pre-line text-lg font-bold leading-snug md:text-2xl lg:text-3xl">
+            {category.title}
+          </h3>
+        </div>
+        <p className="mt-2 whitespace-pre-line text-center text-s leading-relaxed md:mt-3 md:text-xl lg:text-2xl">
+          {category.description}
+        </p>
+      </div>
+      {showDivider && (
+        <div className="mx-auto mt-4 w-full max-w-[350px] sm:max-w-[535px] md:mt-10">
+          <DashedLine dashLength={8} gapLength={10} strokeWidth={1} />
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TypeCard({
   no,
   title,
@@ -186,9 +217,9 @@ function TypeCard({
   const pill = theme === "green" ? "/images/decorative/Union.png" : "/images/decorative/Union_blue.png";
 
   return (
-    <div className="h-[335px] border-2 relative flex flex-col rounded-[20px] bg-[#FFF2B1] pb-3 pt-6 md:h-[380px] lg:h-[600px] lg:rounded-[24px] lg:pb-4 lg:pt-8">
+    <div className="min-h-[335px] border-2 relative flex flex-col rounded-[20px] bg-[#FFF2B1] pb-3 pt-6 md:min-h-[380px] lg:min-h-[600px] lg:rounded-[24px] lg:pb-4 lg:pt-8">
       <div className="mx-auto size-6 shrink-0 rounded-full border border-foreground bg-background lg:size-10" />
-      <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 mt-8 lg:mx-6 lg:mt-10 lg:rounded-[16px] lg:px-4 lg:pb-4 lg:pt-8">
+      <div className="relative mx-4 flex shrink-0 flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 mt-8 lg:mx-6 lg:mt-10 lg:rounded-[16px] lg:px-4 lg:pb-4 lg:pt-8">
         <div className="absolute -top-5 left-0 right-0 flex justify-center lg:-top-[26px]">
           <div className="relative w-[200px] lg:w-[240px]">
             <Image src={pill} alt="" width={317} height={79} className="h-auto w-full" />
@@ -203,13 +234,13 @@ function TypeCard({
       </div>
       {description && (
         <>
-          <div className="mx-4 mt-4 lg:mt-10">
+          <div className="mx-4 mt-4 shrink-0 lg:mt-10">
             <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
           </div>
-          <p className="h-[135px] mx-3 flex flex-col justify-center text-center leading-relaxed lg:my-6 lg:mx-7 lg:text-2xl">
+          <p className="h-[135px] mx-3 flex shrink-0 flex-col justify-center text-center leading-relaxed lg:my-6 lg:mx-7 lg:text-2xl">
             {description}
           </p>
-          <div className="mx-4 mb-3">
+          <div className="mx-4 mb-3 shrink-0">
             <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
           </div>
         </>
@@ -333,34 +364,17 @@ export default function RecruitPage() {
         <section className="bg-background pb-16 md:pb-24">
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <div className="mx-auto mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:gap-10">
-              {categories.map((category, index) => (
-                <div
-                  key={category.title}
-                  className={`flex flex-col ${category.full ? "sm:col-span-2" : ""}`}
-                >
-                  <div
-                    className={`relative flex flex-col justify-center mx-auto h-[190px] w-full max-w-[350px] rounded-[42px] px-3 py-3 sm:max-w-[535px] md:h-[286px] md:rounded-[45px] md:px-6 md:py-5 ${category.color}`}
-                  >
-                    <DashedBorder dashLength={8} gapLength={12} strokeWidth={3} />
-                    <div className="flex items-start justify-center gap-2 md:gap-3">
-                      <CategoryDot className="mt-0.5 md:mt-2.5" />
-                      <h3 className="whitespace-pre-line text-lg font-bold leading-snug md:text-2xl lg:text-3xl">
-                        {category.title}
-                      </h3>
-                    </div>
-                    <p className="mt-2 whitespace-pre-line text-center text-s leading-relaxed md:mt-3 md:text-xl lg:text-2xl">
-                      {category.description}
-                    </p>
-                  </div>
-                  {index < categories.length - 1 && (
-                    <div
-                      className="mx-auto mt-4 w-full max-w-[350px] sm:max-w-[535px] md:mt-10"
-                    >
-                      <DashedLine dashLength={8} gapLength={10} strokeWidth={1} />
-                    </div>
-                  )}
-                </div>
+              {categories.slice(0, -1).map((category) => (
+                <CategoryCard key={category.title} category={category} showDivider />
               ))}
+            </div>
+            <div className="mt-4 flex justify-center md:mt-10">
+              <div className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(50%-1.25rem)]">
+                <CategoryCard
+                  category={categories[categories.length - 1]}
+                  showDivider={false}
+                />
+              </div>
             </div>
           </div>
         </section>
