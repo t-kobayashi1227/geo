@@ -303,7 +303,7 @@ export default function RecruitPage() {
       <main className="flex-1">
         <Hero />
 
-        <section className="bg-background pt-16 pb-16 md:pt-24 md:pb-24">
+        <section className="bg-background pt-16 pb-16 md:pt-24 md:pb-24  relative mt-[-10%] md:mt-[-3%]">
           <div className="flex flex-col md:flex-row mx-auto max-w-[1280px] px-4 md:px-10">
             <div className="flex  items-center justify-center gap-4 md:basis-2/5 md:gap-6 md:flex-col">
               <div className="flex items-end justify-center">

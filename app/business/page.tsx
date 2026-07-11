@@ -91,7 +91,7 @@ export default function BusinessPage() {
       <main className="flex-1">
         <Hero />
 
-        <section className="bg-background pt-16 pb-16 md:pt-24 md:pb-24">
+        <section className="bg-background pt-16 pb-16 md:pt-24 md:pb-24 relative mt-[-10%] md:mt-[-3%]">
           <div className="mx-auto max-w-[1280px] px-4 md:px-10">
             <SectionTitle>協会案内</SectionTitle>
             <div className="mt-10 md:mt-16">
