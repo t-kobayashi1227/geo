@@ -181,7 +181,7 @@ function CategoryCard({
   return (
     <div className="flex flex-col">
       <div
-        className={`relative flex flex-col justify-center mx-auto h-[190px] w-full max-w-[350px] rounded-[42px] px-3 py-3 sm:max-w-[535px] md:h-[286px] md:rounded-[45px] md:px-6 md:py-5 ${category.color}`}
+        className={`relative flex flex-col justify-center mx-auto min-h-[190px] w-full max-w-[350px] rounded-[42px] px-3 py-3 sm:max-w-[535px] md:min-h-[286px] md:rounded-[45px] md:px-6 md:py-5 ${category.color}`}
       >
         <DashedBorder dashLength={8} gapLength={12} strokeWidth={3} />
         <div className="flex items-start justify-center gap-2 md:gap-3">
