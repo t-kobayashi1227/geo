@@ -10,7 +10,7 @@ import { ImArrowDown } from "react-icons/im";
 const categories = [
   {
     title: "社会資本整備",
-    description: "道路・橋・ダム・河川・\nトンネル　鉄道・空港",
+    description: "道路・橋・ダム・河川・\nトンネル・鉄道・空港",
     color: "bg-[#FFC8C9]",
   },
   {
@@ -29,7 +29,7 @@ const categories = [
     color: "bg-[#CAFF8A]",
   },
   {
-    title: "社会資本の維持管理点検\n・長寿命化",
+    title: "社会資本の維持管理 点検\n・長寿命化",
     description: "各種施設点検及び長寿命化検討",
     color: "bg-[#92D1F7]",
   },
@@ -163,11 +163,11 @@ function DownArrow({ className = "" }: { className?: string }) {
   );
 }
 
-function CategoryDot() {
+function CategoryDot({ className = "" }: { className?: string }) {
   return (
     <span
       aria-hidden="true"
-      className="inline-block size-5 shrink-0 rounded-full border border-foreground bg-white md:size-6"
+      className={`inline-block size-5 shrink-0 rounded-full border border-foreground bg-white md:size-6 ${className}`}
     />
   );
 }
@@ -186,7 +186,7 @@ function TypeCard({
   const pill = theme === "green" ? "/images/decorative/Union.png" : "/images/decorative/Union_blue.png";
 
   return (
-    <div className="h-[335px] border-2 relative flex flex-col rounded-[20px] bg-[#FFF2B1] pb-3 pt-6 md:h-[620px] lg:rounded-[24px] lg:pb-4 lg:pt-8">
+    <div className="h-[335px] border-2 relative flex flex-col rounded-[20px] bg-[#FFF2B1] pb-3 pt-6 md:h-[380px] lg:h-[600px] lg:rounded-[24px] lg:pb-4 lg:pt-8">
       <div className="mx-auto size-6 shrink-0 rounded-full border border-foreground bg-background lg:size-10" />
       <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 mt-8 lg:mx-6 lg:mt-10 lg:rounded-[16px] lg:px-4 lg:pb-4 lg:pt-8">
         <div className="absolute -top-5 left-0 right-0 flex justify-center lg:-top-[26px]">
@@ -206,10 +206,10 @@ function TypeCard({
           <div className="mx-4 mt-4 lg:mt-10">
             <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
           </div>
-          <p className="h-[135px] mx-3 flex flex-col justify-center text-center text-sm leading-relaxed lg:my-6 lg:mx-7 lg:text-2xl">
+          <p className="h-[135px] mx-3 flex flex-col justify-center text-center leading-relaxed lg:my-6 lg:mx-7 lg:text-2xl">
             {description}
           </p>
-          <div className="mx-4">
+          <div className="mx-4 mb-3">
             <DashedLine dashLength={8} gapLength={10} strokeWidth={2} />
           </div>
         </>
@@ -232,7 +232,7 @@ function TypeCardOfficeWork({
   const pill = theme === "green" ? "/images/decorative/Union.png" : "/images/decorative/Union_blue.png";
 
   return (
-    <div className="h-[235px] border-2 relative flex flex-col rounded-[20px] bg-[#E2DEDC] pb-3 pt-6 md:h-[420px] md:rounded-[24px] md:pb-4 md:pt-8">
+    <div className="h-[235px] border-2 relative flex flex-col rounded-[20px] bg-[#E2DEDC] pb-3 pt-6 md:h-[270px] md:rounded-[24px] md:pb-4 md:pt-8 lg:h-[420px]">
       <div className="mx-auto size-6 shrink-0 rounded-full border border-foreground bg-background lg:size-10" />
       <div className="relative mx-4 flex flex-col justify-center rounded-[12px] border-2 border-foreground bg-[#FDF9E4] h-[180px] px-3 pb-3 pt-6 mt-8 lg:mx-6 lg:mt-10 lg:rounded-[16px] lg:px-4 lg:pb-4 lg:pt-8">
         <div className="absolute -top-5 left-0 right-0 flex justify-center lg:-top-[26px]">
@@ -339,23 +339,22 @@ export default function RecruitPage() {
                   className={`flex flex-col ${category.full ? "sm:col-span-2" : ""}`}
                 >
                   <div
-                    className={`relative flex flex-col justify-center mx-auto max-w-[535px] h-[286px] w-full rounded-[45px] px-4 py-4 md:px-6 md:py-5 ${category.color} ${category.full ? "" : "max-w-[535px]"
-                      }`}
+                    className={`relative flex flex-col justify-center mx-auto h-[190px] w-full max-w-[350px] rounded-[42px] px-3 py-3 sm:max-w-[535px] md:h-[286px] md:rounded-[45px] md:px-6 md:py-5 ${category.color}`}
                   >
                     <DashedBorder dashLength={8} gapLength={12} strokeWidth={3} />
-                    <div className="flex items-center justify-center gap-2 md:gap-3">
-                      <CategoryDot />
-                      <h3 className="whitespace-pre-line text-sm font-bold leading-snug md:text-3xl">
+                    <div className="flex items-start justify-center gap-2 md:gap-3">
+                      <CategoryDot className="mt-0.5 md:mt-2.5" />
+                      <h3 className="whitespace-pre-line text-lg font-bold leading-snug md:text-2xl lg:text-3xl">
                         {category.title}
                       </h3>
                     </div>
-                    <p className="mt-2 whitespace-pre-line text-center text-xs leading-relaxed md:mt-3 md:text-3xl">
+                    <p className="mt-2 whitespace-pre-line text-center text-s leading-relaxed md:mt-3 md:text-xl lg:text-2xl">
                       {category.description}
                     </p>
                   </div>
                   {index < categories.length - 1 && (
                     <div
-                      className={`mx-auto mt-4 w-full md:mt-10 ${category.full ? "" : "max-w-[535px]"}`}
+                      className="mx-auto mt-4 w-full max-w-[350px] sm:max-w-[535px] md:mt-10"
                     >
                       <DashedLine dashLength={8} gapLength={10} strokeWidth={1} />
                     </div>
@@ -386,13 +385,13 @@ export default function RecruitPage() {
               <SectionTitle>①フィールドワーク</SectionTitle>
             </div>
             <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
-              <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-10">
+              <div className="mx-auto grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:justify-stretch lg:gap-10">
                 {fieldWorkTypes.slice(0, 4).map((type) => (
                   <TypeCard key={type.no} theme="green" {...type} />
                 ))}
               </div>
               <div className="mt-4 flex justify-center lg:mt-10">
-                <div className="w-[290px] lg:w-[calc(50%-0.75rem)]">
+                <div className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(50%-0.75rem)]">
                   <TypeCard theme="green" {...fieldWorkTypes[4]} />
                 </div>
               </div>
@@ -415,13 +414,13 @@ export default function RecruitPage() {
               <SectionTitle>②オフィスワーク</SectionTitle>
             </div>
             <div className="mx-auto mt-10 max-w-[1070px] md:mt-16">
-              <div className="grid grid-cols-[repeat(auto-fit,290px)] justify-center gap-4 lg:grid-cols-2 lg:justify-stretch lg:gap-10">
+              <div className="mx-auto grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:justify-stretch lg:gap-10">
                 {officeWorkTypes.slice(0, 2).map((type) => (
                   <TypeCardOfficeWork key={type.no} theme="blue" {...type} />
                 ))}
               </div>
               <div className="mt-4 flex justify-center lg:mt-10">
-                <div className="w-[290px] lg:w-[calc(50%-0.75rem)]">
+                <div className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(50%-0.75rem)]">
                   <TypeCardOfficeWork theme="blue" {...officeWorkTypes[2]} />
                 </div>
               </div>
