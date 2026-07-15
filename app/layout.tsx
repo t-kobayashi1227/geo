@@ -23,6 +23,10 @@ const rubikDoodleShadow = Rubik_Doodle_Shadow({
 export const metadata: Metadata = {
   title: "新潟県地質調査業協会",
   description: "一般社団法人 新潟県地質調査業協会",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({

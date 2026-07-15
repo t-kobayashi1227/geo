@@ -121,7 +121,7 @@ export function HeroLabels() {
               alt={item.label}
               width={item.imgWidth}
               height={item.imgHeight}
-              className="h-auto w-full"
+              className="h-auto w-full "
               draggable={false}
             />
           </button>
