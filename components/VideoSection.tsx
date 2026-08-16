@@ -38,7 +38,7 @@ export function VideoSection() {
                 <div className="relative flex aspect-video items-center justify-center bg-brand-gray">
                   {isPlaying && videoId ? (
                     <iframe
-                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1`}
+                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
                       title={video.title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
