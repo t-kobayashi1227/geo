@@ -35,20 +35,20 @@ export function VideoSection() {
             const isPlaying = playingNo === video.no;
             return (
               <div key={video.no} className="group flex flex-col gap-2 md:gap-3">
-                <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-[12px] bg-brand-gray md:rounded-[16px]">
+                <div className="relative flex aspect-video items-center justify-center bg-brand-gray">
                   {isPlaying && videoId ? (
                     <iframe
                       src={`https://www.youtube.com/embed/${videoId}?playsinline=1`}
                       title={video.title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      className="absolute inset-0 size-full"
+                      className="absolute inset-0 size-full rounded-[12px] md:rounded-[16px]"
                     />
                   ) : (
                     <button
                       type="button"
                       onClick={() => setPlayingNo(video.no)}
-                      className="absolute inset-0 flex size-full items-center justify-center"
+                      className="absolute inset-0 flex size-full items-center justify-center overflow-hidden rounded-[12px] md:rounded-[16px]"
                       aria-label={`${video.title} を再生`}
                     >
                       {videoId && (
