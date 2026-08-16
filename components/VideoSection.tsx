@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { FaPlay } from "react-icons/fa6";
+import { useRef, useState } from "react";
+import { FaPlay, FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
 
 const videos = [
   { no: "1", title: "社会を守るジオ・アドバイザー地質調査技術者", href: "https://youtu.be/IkVjAKpbyUU?si=BsQ9RyXghLSWeQwy" },
@@ -20,8 +20,27 @@ function getYoutubeVideoId(url: string) {
   return match?.[1];
 }
 
+function postPlayerCommand(iframe: HTMLIFrameElement | null, func: string, args: unknown[] = []) {
+  iframe?.contentWindow?.postMessage(JSON.stringify({ event: "command", func, args }), "https://www.youtube.com");
+}
+
 export function VideoSection() {
   const [playingNo, setPlayingNo] = useState<string | null>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const iframeRefs = useRef<Record<string, HTMLIFrameElement | null>>({});
+
+  const handlePlay = (no: string) => {
+    setPlayingNo(no);
+    setIsMuted(true);
+  };
+
+  const toggleMute = (no: string) => {
+    const iframe = iframeRefs.current[no];
+    const nextMuted = !isMuted;
+    postPlayerCommand(iframe, nextMuted ? "mute" : "unMute");
+    if (!nextMuted) postPlayerCommand(iframe, "setVolume", [100]);
+    setIsMuted(nextMuted);
+  };
 
   return (
     <section className="bg-background pb-16 md:pb-24">
@@ -37,17 +56,30 @@ export function VideoSection() {
               <div key={video.no} className="group flex flex-col gap-2 md:gap-3">
                 <div className="relative flex aspect-video items-center justify-center bg-brand-gray">
                   {isPlaying && videoId ? (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1`}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="absolute inset-0 size-full rounded-[12px] md:rounded-[16px]"
-                    />
+                    <>
+                      <iframe
+                        ref={(el) => {
+                          iframeRefs.current[video.no] = el;
+                        }}
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1&enablejsapi=1`}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="absolute inset-0 size-full rounded-[12px] md:rounded-[16px]"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => toggleMute(video.no)}
+                        className="absolute bottom-2 right-2 z-10 flex size-8 items-center justify-center rounded-full bg-black/60 text-white md:size-10"
+                        aria-label={isMuted ? "音声をONにする" : "音声をOFFにする"}
+                      >
+                        {isMuted ? <FaVolumeXmark className="text-sm md:text-base" /> : <FaVolumeHigh className="text-sm md:text-base" />}
+                      </button>
+                    </>
                   ) : (
                     <button
                       type="button"
-                      onClick={() => setPlayingNo(video.no)}
+                      onClick={() => handlePlay(video.no)}
                       className="absolute inset-0 flex size-full items-center justify-center overflow-hidden rounded-[12px] md:rounded-[16px]"
                       aria-label={`${video.title} を再生`}
                     >
