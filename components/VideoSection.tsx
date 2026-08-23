@@ -109,11 +109,11 @@ export function VideoSection() {
                 <div
                   key={`${video.no}-${i}`}
                   aria-hidden={isClone}
-                  className={`group flex w-[78vw] shrink-0 snap-center flex-col gap-2 md:w-auto md:shrink md:gap-3 ${
+                  className={`group flex w-[78vw] shrink-0 snap-center flex-col overflow-hidden rounded-sm border border-black/10 bg-white transition-opacity hover:opacity-90 md:w-auto md:shrink ${
                     isClone ? "md:hidden" : ""
                   }`}
                 >
-                  <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-[12px] bg-brand-gray md:rounded-[16px]">
+                  <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-brand-gray">
                     {isPlaying && videoId ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1`}
@@ -139,16 +139,18 @@ export function VideoSection() {
                             className="object-cover"
                           />
                         )}
-                        <span className="relative flex size-10 items-center justify-center rounded-full bg-white/90 text-brand-gray transition-transform group-hover:scale-110 md:size-12">
+                        <span className="relative flex size-10 items-center justify-center rounded-full bg-[#2c3e4d]/85 text-white transition-transform group-hover:scale-110 md:size-12">
                           <FaPlay className="ml-0.5 text-base md:text-lg" />
                         </span>
                       </button>
                     )}
                   </div>
-                  <p className="text-xs leading-snug md:text-sm">
-                    <span className="font-bold">【第{video.no}弾】</span>
-                    {video.title}
-                  </p>
+                  <div className="flex flex-col gap-1 px-3 py-2.5 md:gap-1.5 md:px-4 md:py-3">
+                    <span className="-ml-1.5 text-[11px] font-bold text-[#B5603F] md:text-xs">【第{video.no}弾】</span>
+                    <p className="text-xs font-medium leading-snug text-foreground md:text-sm">
+                      {video.title}
+                    </p>
+                  </div>
                 </div>
               );
             })}
@@ -180,7 +182,7 @@ export function VideoSection() {
               onClick={() => goToRealIndex(index)}
               aria-label={`${index + 1}枚目のスライドを表示`}
               className={`size-2 rounded-full transition-colors ${
-                index === realActiveIndex ? "bg-brand-green" : "bg-brand-gray/40"
+                index === realActiveIndex ? "bg-brand-blue" : "bg-brand-gray/40"
               }`}
             />
           ))}
