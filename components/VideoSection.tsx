@@ -156,7 +156,7 @@ export function VideoSection() {
             })}
           </div>
 
-          <button
+          {/* <button
             type="button"
             onClick={() => goToStep(-1)}
             aria-label="前の動画"
@@ -171,7 +171,7 @@ export function VideoSection() {
             className="absolute right-1 top-[38%] flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md md:hidden"
           >
             <FaChevronRight className="text-sm" />
-          </button>
+          </button> */}
         </div>
 
         <div className="mt-4 flex justify-center gap-2 md:hidden">
